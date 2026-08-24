@@ -34,7 +34,7 @@ tailwind.config = {
         brandHi: '#FF0000',
         brandDeep:'#B30000',
         brandSoft:'#FFECEC',
-        ink:     '#011139',
+        ink:     '#233A74',
         body:    '#4B5563',
         paper:   '#F5F7FC',
         line:    '#E4E9F2'
@@ -51,7 +51,7 @@ tailwind.config = {
   body { font-family:'Montserrat',system-ui,sans-serif; color:#4B5563; background:#fff; -webkit-font-smoothing:antialiased; }
   .shell { max-width:1240px; margin-inline:auto; padding-inline:24px; }
 
-  h1,h2,h3 { color:#011139; font-weight:700; letter-spacing:-.01em; }
+  h1,h2,h3 { color:#233A74; font-weight:700; letter-spacing:-.01em; }
   .t-h1 { font-size:clamp(2.1rem,1.3rem + 3vw,3rem); line-height:1.12; }
   .t-h2 { font-size:clamp(1.4rem,1.1rem + 1.1vw,1.75rem); line-height:1.2; }
   .t-h3 { font-size:1.0625rem; line-height:1.35; }
@@ -75,7 +75,7 @@ tailwind.config = {
   .prose p { color:#4B5563; font-size:.9875rem; line-height:1.8; margin-top:1rem; max-width:72ch; }
   .prose a { color:#B30000; font-weight:600; text-decoration:underline; text-underline-offset:3px; }
   .prose a:hover { color:#E60000; }
-  .prose strong { color:#011139; font-weight:700; }
+  .prose strong { color:#233A74; font-weight:700; }
   .sec { scroll-margin-top:104px; }
   .sec + .sec { margin-top:3.25rem; padding-top:3.25rem; border-top:1px solid #E4E9F2; }
   .sec-num { font-size:.8125rem; font-weight:700; letter-spacing:.08em; color:#E60000; }
@@ -93,11 +93,11 @@ tailwind.config = {
 
 <header class="sticky top-0 z-50 bg-white/85 backdrop-blur-md">
   <div class="shell flex items-center justify-between py-4">
-    <a href="index.html" class="inline-flex min-h-[44px] items-center gap-2.5 text-[18px] font-bold tracking-tight text-ink">
-      <span class="grid h-9 w-9 place-items-center rounded-soft bg-brand text-white">
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 000-7.8z"/></svg>
-      </span>
-      ALS Course&nbsp;<span class="text-brand">India</span>
+    <a href="index.html" class="inline-flex min-h-[44px] items-center" aria-label="ALS Course India — home">
+      <img src="assets/logo-mark-navy.png" width="320" height="267" alt=""
+           class="h-10 w-auto lg:hidden" />
+      <img src="assets/logo-lockup-navy.png" width="720" height="251" alt=""
+           class="hidden h-14 w-auto lg:block" />
     </a>
     <a href="index.html" class="btn btn-primary">Back to the course
       <span class="nub"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
