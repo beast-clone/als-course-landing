@@ -40,7 +40,7 @@
 <link rel="apple-touch-icon" href="assets/favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- Structured data: Course + Organisation + LocalBusiness + FAQ, so this page is
      eligible for course, local and FAQ rich results and is legible to AI answer engines. -->
@@ -194,12 +194,14 @@ tailwind.config = {
         flame:   '#D43F00',
         brandDeep:'#B30000',
         brandSoft:'#FFECEC',
-        ink:     '#233A74',
-        body:    '#4B5563',
-        paper:   '#F5F7FC',
-        line:    '#E4E9F2'
+        ink:     '#0A0A0A',
+        navy:    '#233A74',
+        body:    '#525252',
+        paper:   '#F5F5F5',
+        line:    '#E5E5E5',
+        mute:    '#737373'
       },
-      fontFamily: { sans: ['Montserrat', 'system-ui', 'sans-serif'] },
+      fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
       borderRadius: { card: '30px', pill: '50px', soft: '20px' }
     }
   }
@@ -208,47 +210,47 @@ tailwind.config = {
 
 <style>
   html { scroll-behavior:smooth; }
-  body { font-family:'Montserrat',system-ui,sans-serif; color:#4B5563; background:#fff; -webkit-font-smoothing:antialiased; }
-  .shell { max-width:1320px; margin-inline:auto; padding-inline:24px; }
+  body { font-family:'Inter',system-ui,sans-serif; color:#525252; background:#F5F5F5; -webkit-font-smoothing:antialiased; }
+  .shell { max-width:1241px; margin-inline:auto; padding-inline:24px; }
 
   /* !important is required: the Tailwind CDN injects its preflight
      (h1-h6 { font-weight: inherit }) after this inline <style>, so at equal
      specificity it wins and every heading renders at 400. */
-  h1,h2,h3 { color:#233A74; font-weight:700 !important; letter-spacing:normal; }
-  .text-brandHi, .text-flame { font-weight:800 !important; }
-  .t-h1 { font-size:clamp(2.25rem,1.25rem + 4vw,3.25rem); line-height:1.12; }
-  .t-h2 { font-size:clamp(1.75rem,1.1rem + 2.9vw,2.875rem); line-height:1.2; }
+    /* The reference sets its display type at weight 400 with negative tracking —
+     large, light and tight is what reads as editorial rather than shouty.
+     !important is still needed to beat Tailwind's preflight. */
+  h1,h2,h3 { color:#0A0A0A; font-weight:400 !important; letter-spacing:-.02em; }
+  .text-brandHi, .text-flame { font-weight:600 !important; }
+  .t-h1 { font-size:clamp(2.5rem,1.4rem + 4.6vw,4rem); line-height:1.1; letter-spacing:-.01em; }
+  .t-h2 { font-size:clamp(1.875rem,1.15rem + 3.1vw,3rem); line-height:1.21; letter-spacing:-.025em; }
   /* !important to beat the h1-h3 700 rule above, which itself needs !important
      to beat Tailwind's preflight. Reference card titles are 600, not 700. */
-  .t-h3 { font-size:1.125rem; font-weight:600 !important; line-height:1.5; }
-  .copy { color:#4B5563; font-size:1.125rem; font-weight:500; line-height:1.6; }
-  .lead { color:#4B5563; font-size:1.125rem; font-weight:500; line-height:1.6; }
+  .t-h3 { font-size:1.5rem; font-weight:500 !important; line-height:1.33; letter-spacing:-.02em; }
+  .copy { color:#525252; font-size:1rem; font-weight:400; line-height:1.5; }
+  .lead { color:#525252; font-size:1.125rem; font-weight:400; line-height:1.55; }
 
   /* Pill button with the reference's circular arrow badge. */
   .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
-         border-radius:12px; padding:.95rem 1.75rem; font-size:.9375rem; font-weight:600;
-         line-height:1.2; transition:background-color .18s ease, border-color .18s ease, color .18s ease; }
+         border-radius:16px; padding:1rem 1.5rem; min-height:56px; font-size:.9375rem;
+         font-weight:500; line-height:1.2;
+         transition:background-color .18s ease, color .18s ease; }
   .btn-primary { background:#E60000; color:#fff; }
   .btn-primary:hover { background:#B30000; }
-  .btn-ghost { background:#fff; color:#233A74; border:1.5px solid #233A74; }
-  .btn-ghost:hover { background:#233A74; color:#fff; }
+  .btn-ghost { background:#E5E5E5; color:#0A0A0A; }
+  .btn-ghost:hover { background:#D9D9D9; }
   .btn:focus-visible { outline:2px solid #E60000; outline-offset:3px; }
 
-  .card { background:#fff; border-radius:20px; box-shadow:0 1px 8px rgba(35,58,116,.10); }
-  .chip { display:inline-flex; align-items:center; gap:.55rem; border-radius:50px;
-          background:#fff; padding:.65rem 1.05rem; font-size:.8125rem; font-weight:600; color:#233A74;
-          box-shadow:0 14px 36px -18px rgba(35,58,116,.45); }
+  .card { background:#fff; border-radius:16px; }
+  .chip { display:inline-flex; align-items:center; gap:.55rem; border-radius:99px;
+          background:#fff; padding:.6rem 1rem; font-size:.8125rem; font-weight:500; color:#0A0A0A; }
 
   /* Hero wash — the reference's soft blue gradient field. */
-  .hero-wash { background:
-      radial-gradient(1100px 620px at 78% 18%, rgba(230,0,0,.10), transparent 62%),
-      radial-gradient(820px 520px at 8% 84%, rgba(230,0,0,.08), transparent 60%),
-      linear-gradient(180deg,#F7F9FE 0%,#EDF1FD 48%,#FFFFFF 100%); }
+  .hero-wash { background:#F5F5F5; }
   /* Reference sets this at 241px / 5% and staggers the two words diagonally
      behind the subject rather than running them on one line. */
   .ghost-wrap { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
   .ghost-word { position:absolute; font-weight:700; line-height:.78; white-space:nowrap;
-                font-size:clamp(3.5rem,16.8vw,15.1rem); color:rgba(35,58,116,.055);
+                font-size:clamp(3.5rem,16.8vw,15.1rem); color:rgba(10,10,10,.055);
                 user-select:none; }
   /* `b` is the wider word, so it is anchored right rather than positioned from
      the left — at 44% it ran past the viewport and got clipped mid-letter. */
@@ -260,7 +262,7 @@ tailwind.config = {
   /* Section header: the reference centres these in a 700px column and lets the
      grid below run the full shell. That contrast between a narrow, centred
      intro and wide content is what gives it its rhythm. */
-  .sec-head { max-width:700px; margin-inline:auto; text-align:center; }
+  .sec-head { max-width:704px; margin-inline:auto; text-align:center; }
   .sec-head .copy { margin-top:1.15rem; }
 
   /* Marquee: duplicated track + translateX(-50%) loops seamlessly. */
@@ -319,7 +321,7 @@ tailwind.config = {
      from the edges rather than a full-bleed sticky strip. -->
 <header class="sticky top-0 z-50 pt-4">
   <div class="shell">
-    <div class="flex items-center justify-between rounded-[80px] bg-white/70 px-6 py-3 shadow-[0_1px_8px_rgba(35,58,116,.10)] backdrop-blur-xl lg:pl-8 lg:pr-3">
+    <div class="flex items-center justify-between rounded-[99px] bg-white px-6 py-3 backdrop-blur-xl lg:pl-8 lg:pr-3">
     <a href="#top" class="inline-flex min-h-[44px] items-center" aria-label="ALS Course India — home">
       <img src="assets/logo-mark-navy.png" width="320" height="267" alt=""
            class="h-10 w-auto lg:hidden" />
@@ -337,7 +339,7 @@ tailwind.config = {
 
     <a href="#pricing" class="btn btn-primary hidden lg:inline-flex">Register Now</a>
 
-    <button id="navToggle" class="grid h-11 w-11 place-items-center rounded-soft bg-paper lg:hidden" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
+    <button id="navToggle" class="grid h-11 w-11 place-items-center rounded-[12px] bg-paper lg:hidden" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#233A74" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
     </div>
@@ -345,7 +347,7 @@ tailwind.config = {
 
   <div id="mobileMenu" class="hidden lg:hidden">
     <div class="shell mt-2">
-      <div class="flex flex-col rounded-[24px] bg-white/90 px-6 py-3 shadow-[0_1px_8px_rgba(35,58,116,.10)] backdrop-blur-xl">
+      <div class="flex flex-col rounded-[24px] bg-white px-6 py-3">
       <a href="#why" class="inline-flex min-h-[44px] items-center text-[15px] font-medium text-body">Why This Course</a>
       <a href="#curriculum" class="inline-flex min-h-[44px] items-center text-[15px] font-medium text-body">Curriculum</a>
       <a href="#team" class="inline-flex min-h-[44px] items-center text-[15px] font-medium text-body">Our Team</a>
@@ -386,7 +388,7 @@ tailwind.config = {
       </div>
 
       <div class="rise-in relative" style="animation-delay:.34s">
-        <figure class="overflow-hidden rounded-card shadow-[0_36px_90px_-46px_rgba(35,58,116,.6)]">
+        <figure class="overflow-hidden rounded-card">
           <img src="assets/training-1.jpg" width="1400" height="933" fetchpriority="high" decoding="async"
                alt="Healthcare professionals performing bag-valve-mask ventilation during Advanced Life Support training"
                class="h-full w-full object-cover" />
@@ -435,7 +437,7 @@ tailwind.config = {
   </div>
 </section>
 
-<section id="why" class="py-16 lg:py-[100px]">
+<section id="why" class="py-14 lg:py-20">
   <div class="shell">
     <div data-reveal class="sec-head">
       <h2 class="t-h2">India&rsquo;s 1st ALS course recognized in the <span class="text-brandHi">UK</span> and <span class="text-brandHi">Australia</span></h2>
@@ -444,21 +446,21 @@ tailwind.config = {
 
     <div data-reveal class="mt-[50px] grid gap-[30px] md:grid-cols-3">
       <article class="card p-[30px]">
-        <span class="grid h-12 w-12 place-items-center rounded-soft bg-brandSoft text-brand">
+        <span class="grid h-12 w-12 place-items-center rounded-[12px] bg-brandSoft text-brand">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.2 13.8L7 22l5-3 5 3-1.2-8.2"/></svg>
         </span>
         <h3 class="t-h3 mt-6">ERC Accredited Certificate</h3>
         <p class="copy mt-3">Get certified with an ERC-accredited ALS course, recognized by healthcare systems in the UK and Australia. Valid for up to 3 years, this certification opens doors to international medical practice.</p>
       </article>
       <article class="card p-[30px]">
-        <span class="grid h-12 w-12 place-items-center rounded-soft bg-brandSoft text-brand">
+        <span class="grid h-12 w-12 place-items-center rounded-[12px] bg-brandSoft text-brand">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13A4 4 0 0119 7"/></svg>
         </span>
         <h3 class="t-h3 mt-6">Qualified Instructors</h3>
         <p class="copy mt-3">Learn from ERC-certified instructors who bring real-world experience to each session, ensuring you master essential ALS skills with confidence.</p>
       </article>
       <article class="card p-[30px]">
-        <span class="grid h-12 w-12 place-items-center rounded-soft bg-brandSoft text-brand">
+        <span class="grid h-12 w-12 place-items-center rounded-[12px] bg-brandSoft text-brand">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
         </span>
         <h3 class="t-h3 mt-6">Desirable for NHS Jobs</h3>
@@ -468,7 +470,7 @@ tailwind.config = {
   </div>
 </section>
 
-<section class="bg-paper py-16 lg:py-[100px]">
+<section class="bg-paper py-14 lg:py-20">
   <div class="shell">
     <div data-reveal class="sec-head"><h2 class="t-h2">Complete and comprehensive <span class="text-brandHi">ALS training experience</span></h2></div>
 
@@ -489,7 +491,7 @@ tailwind.config = {
   </div>
 </section>
 
-<section id="curriculum" class="py-16 lg:py-[100px]">
+<section id="curriculum" class="py-14 lg:py-20">
   <div class="shell">
     <div data-reveal class="sec-head"><h2 class="t-h2">Comprehensive, globally recognized ALS training with <span class="text-brandHi">hands-on expertise</span></h2></div>
 
@@ -505,14 +507,14 @@ tailwind.config = {
             <li class="flex gap-3 text-[15px] text-ink"><span class="mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand text-white"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span>Learn the latest life-saving methods as per ERC guidelines, recognized by healthcare authorities in the UK.</li>
           </ul>
         </div>
-        <figure class="overflow-hidden rounded-card shadow-[0_30px_70px_-44px_rgba(35,58,116,.5)]">
+        <figure class="overflow-hidden rounded-card">
           <img src="assets/training-2.jpg" width="1400" height="1001" loading="lazy" decoding="async"
                alt="ERC-accredited Advanced Life Support curriculum training session" class="h-full w-full object-cover" />
         </figure>
       </article>
 
       <article class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-        <figure class="order-2 overflow-hidden rounded-card shadow-[0_30px_70px_-44px_rgba(35,58,116,.5)] lg:order-1">
+        <figure class="order-2 overflow-hidden rounded-card lg:order-1">
           <img src="assets/training-3.jpg" width="1400" height="933" loading="lazy" decoding="async"
                alt="Medical team practising cardiac arrest management and CPR during ALS training" class="h-full w-full object-cover" />
         </figure>
@@ -537,7 +539,7 @@ tailwind.config = {
             <li class="flex gap-3 text-[15px] text-ink"><span class="mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand text-white"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span>Learn from certified trainers through immersive sessions that build practical knowledge and real-world application skills.</li>
           </ul>
         </div>
-        <figure class="overflow-hidden rounded-card shadow-[0_30px_70px_-44px_rgba(35,58,116,.5)]">
+        <figure class="overflow-hidden rounded-card">
           <img src="assets/course-1.jpg" width="1400" height="933" loading="lazy" decoding="async"
                alt="Hands-on ALS skill assessment with ERC-certified instructors" class="h-full w-full object-cover" />
         </figure>
@@ -547,7 +549,7 @@ tailwind.config = {
   </div>
 </section>
 
-<section class="bg-paper py-16 lg:py-[100px]">
+<section class="bg-paper py-14 lg:py-20">
   <div class="shell">
     <figure data-reveal class="card mx-auto max-w-[74ch] px-8 py-12 text-center lg:px-14">
       <span class="mx-auto grid h-12 w-12 place-items-center rounded-full bg-brandSoft text-brand">
@@ -564,7 +566,7 @@ tailwind.config = {
   </div>
 </section>
 
-<section id="team" class="py-16 lg:py-[100px]">
+<section id="team" class="py-14 lg:py-20">
   <div class="shell">
     <h2 data-reveal class="t-h2 text-center">The Core Team. <span class="text-brandHi">People who make it happen.</span></h2>
 
@@ -611,39 +613,39 @@ tailwind.config = {
     <div data-reveal class="mt-10 grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
       <figure class="card p-5 text-center">
         <img src="assets/team/david-obrien.jpg" width="560" height="560" loading="lazy" decoding="async"
-             alt="Dr David O'Brien, ALS Instructor" class="mx-auto aspect-square w-full max-w-[210px] rounded-soft object-cover" />
+             alt="Dr David O'Brien, ALS Instructor" class="mx-auto aspect-square w-full max-w-[210px] rounded-[12px] object-cover" />
         <figcaption class="mt-4"><div class="text-[17px] font-bold text-ink">Dr David O&rsquo;Brien</div><div class="text-[14px] text-body">ALS Instructor</div></figcaption>
       </figure>
       <figure class="card p-5 text-center">
         <img src="assets/team/hesham-turki.png" width="560" height="560" loading="lazy" decoding="async"
-             alt="Dr Hesham Turki, ALS Instructor" class="mx-auto aspect-square w-full max-w-[210px] rounded-soft object-cover" />
+             alt="Dr Hesham Turki, ALS Instructor" class="mx-auto aspect-square w-full max-w-[210px] rounded-[12px] object-cover" />
         <figcaption class="mt-4"><div class="text-[17px] font-bold text-ink">Dr Hesham Turki</div><div class="text-[14px] text-body">ALS Instructor</div></figcaption>
       </figure>
       <figure class="card p-5 text-center">
         <img src="assets/team/edward-chapman.png" width="560" height="560" loading="lazy" decoding="async"
-             alt="Edward Chapman, ALS Instructor" class="mx-auto aspect-square w-full max-w-[210px] rounded-soft object-cover" />
+             alt="Edward Chapman, ALS Instructor" class="mx-auto aspect-square w-full max-w-[210px] rounded-[12px] object-cover" />
         <figcaption class="mt-4"><div class="text-[17px] font-bold text-ink">Edward Chapman</div><div class="text-[14px] text-body">ALS Instructor</div></figcaption>
       </figure>
       <figure class="card p-5 text-center">
         <img src="assets/team/ian-trueman.png" width="560" height="560" loading="lazy" decoding="async"
-             alt="Ian Trueman, ALS Instructor" class="mx-auto aspect-square w-full max-w-[210px] rounded-soft object-cover" />
+             alt="Ian Trueman, ALS Instructor" class="mx-auto aspect-square w-full max-w-[210px] rounded-[12px] object-cover" />
         <figcaption class="mt-4"><div class="text-[17px] font-bold text-ink">Ian Trueman</div><div class="text-[14px] text-body">ALS Instructor</div></figcaption>
       </figure>
       <figure class="card p-5 text-center">
         <img src="assets/team/paula-shrubsole.png" width="560" height="560" loading="lazy" decoding="async"
-             alt="Paula Shrubsole, ALS Instructor" class="mx-auto aspect-square w-full max-w-[210px] rounded-soft object-cover" />
+             alt="Paula Shrubsole, ALS Instructor" class="mx-auto aspect-square w-full max-w-[210px] rounded-[12px] object-cover" />
         <figcaption class="mt-4"><div class="text-[17px] font-bold text-ink">Paula Shrubsole</div><div class="text-[14px] text-body">ALS Instructor</div></figcaption>
       </figure>
       <figure class="card p-5 text-center">
         <img src="assets/team/scott-slater.png" width="560" height="560" loading="lazy" decoding="async"
-             alt="Scott Slater, ALS Instructor" class="mx-auto aspect-square w-full max-w-[210px] rounded-soft object-cover" />
+             alt="Scott Slater, ALS Instructor" class="mx-auto aspect-square w-full max-w-[210px] rounded-[12px] object-cover" />
         <figcaption class="mt-4"><div class="text-[17px] font-bold text-ink">Scott Slater</div><div class="text-[14px] text-body">ALS Instructor</div></figcaption>
       </figure>
     </div>
   </div>
 </section>
 
-<section id="pricing" class="bg-paper py-16 lg:py-[100px]">
+<section id="pricing" class="bg-paper py-14 lg:py-20">
   <div class="shell">
     <div data-reveal class="sec-head"><h2 class="t-h2">Gain essential skills with our <span class="text-brandHi">ERC-accredited</span> ALS training</h2></div>
 
@@ -675,7 +677,7 @@ tailwind.config = {
   </div>
 </section>
 
-<section class="py-16 lg:py-[100px]">
+<section class="py-14 lg:py-20">
   <div class="shell">
     <div data-reveal class="sec-head"><h2 class="t-h2">Trusted by <span class="text-brandHi">hundreds of doctors</span></h2></div>
 
@@ -717,7 +719,7 @@ tailwind.config = {
   </div>
 </section>
 
-<section id="faq" class="bg-paper py-16 lg:py-[100px]">
+<section id="faq" class="bg-paper py-14 lg:py-20">
   <div class="shell">
     <div data-reveal class="sec-head">
       <h2 class="t-h2">Have a question? <span class="text-brandHi">We&rsquo;re here to answer.</span></h2>
@@ -753,7 +755,7 @@ tailwind.config = {
   </div>
 </section>
 
-<section class="py-16 lg:py-[100px]">
+<section class="py-14 lg:py-20">
   <div class="shell">
     <div data-reveal class="sec-head"><h2 class="t-h2">We have a <span class="text-brandHi">fair &amp; transparent</span> refund policy</h2></div>
     <div data-reveal class="mt-[50px] grid gap-[30px] md:grid-cols-3">
