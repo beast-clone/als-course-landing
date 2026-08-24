@@ -214,7 +214,7 @@ tailwind.config = {
   /* !important is required: the Tailwind CDN injects its preflight
      (h1-h6 { font-weight: inherit }) after this inline <style>, so at equal
      specificity it wins and every heading renders at 400. */
-  h1,h2,h3 { color:#233A74; font-weight:700 !important; letter-spacing:-.01em; }
+  h1,h2,h3 { color:#233A74; font-weight:700 !important; letter-spacing:normal; }
   .text-brandHi, .text-flame { font-weight:800 !important; }
   .t-h1 { font-size:clamp(2.25rem,1.25rem + 4vw,3.25rem); line-height:1.12; }
   .t-h2 { font-size:clamp(1.75rem,1.1rem + 2.9vw,2.875rem); line-height:1.2; }
@@ -244,9 +244,16 @@ tailwind.config = {
       radial-gradient(1100px 620px at 78% 18%, rgba(230,0,0,.10), transparent 62%),
       radial-gradient(820px 520px at 8% 84%, rgba(230,0,0,.08), transparent 60%),
       linear-gradient(180deg,#F7F9FE 0%,#EDF1FD 48%,#FFFFFF 100%); }
-  .ghost-word { font-weight:700; letter-spacing:-.035em; line-height:.8;
-                font-size:clamp(4.5rem,15vw,13rem); color:#233A74; opacity:.05;
-                white-space:nowrap; user-select:none; }
+  /* Reference sets this at 241px / 5% and staggers the two words diagonally
+     behind the subject rather than running them on one line. */
+  .ghost-wrap { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+  .ghost-word { position:absolute; font-weight:700; line-height:.78; white-space:nowrap;
+                font-size:clamp(3.5rem,16.8vw,15.1rem); color:rgba(35,58,116,.055);
+                user-select:none; }
+  /* `b` is the wider word, so it is anchored right rather than positioned from
+     the left — at 44% it ran past the viewport and got clipped mid-letter. */
+  .ghost-word.a { top:3%;  left:0; }
+  .ghost-word.b { top:25%; right:0; }
 
   .rule { border-top:1px solid #E4E9F2; }
 
@@ -308,8 +315,11 @@ tailwind.config = {
 </head>
 <body>
 
-<header class="sticky top-0 z-50 bg-white/85 backdrop-blur-md">
-  <div class="shell flex items-center justify-between py-4">
+<!-- Floating translucent pill, per the reference: an 80px-radius bar inset
+     from the edges rather than a full-bleed sticky strip. -->
+<header class="sticky top-0 z-50 pt-4">
+  <div class="shell">
+    <div class="flex items-center justify-between rounded-[80px] bg-white/70 px-6 py-3 shadow-[0_1px_8px_rgba(35,58,116,.10)] backdrop-blur-xl lg:pl-8 lg:pr-3">
     <a href="#top" class="inline-flex min-h-[44px] items-center" aria-label="ALS Course India — home">
       <img src="assets/logo-mark-navy.png" width="320" height="267" alt=""
            class="h-10 w-auto lg:hidden" />
@@ -330,25 +340,29 @@ tailwind.config = {
     <button id="navToggle" class="grid h-11 w-11 place-items-center rounded-soft bg-paper lg:hidden" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#233A74" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
+    </div>
   </div>
 
   <div id="mobileMenu" class="hidden lg:hidden">
-    <div class="shell rule flex flex-col pb-4 pt-2">
+    <div class="shell mt-2">
+      <div class="flex flex-col rounded-[24px] bg-white/90 px-6 py-3 shadow-[0_1px_8px_rgba(35,58,116,.10)] backdrop-blur-xl">
       <a href="#why" class="inline-flex min-h-[44px] items-center text-[15px] font-medium text-body">Why This Course</a>
       <a href="#curriculum" class="inline-flex min-h-[44px] items-center text-[15px] font-medium text-body">Curriculum</a>
       <a href="#team" class="inline-flex min-h-[44px] items-center text-[15px] font-medium text-body">Our Team</a>
       <a href="#pricing" class="inline-flex min-h-[44px] items-center text-[15px] font-medium text-body">Pricing</a>
       <a href="#faq" class="inline-flex min-h-[44px] items-center text-[15px] font-medium text-body">FAQ</a>
       <a href="#pricing" class="btn btn-primary mt-3 self-start">Register Now</a>
+      </div>
     </div>
   </div>
 </header>
 
 <main>
 
-<section id="top" class="hero-wash relative overflow-hidden pb-20 pt-12 lg:pb-28 lg:pt-16">
-  <div class="pointer-events-none absolute inset-x-0 top-8 flex justify-center" aria-hidden="true">
-    <span class="ghost-word">ALS COURSE</span>
+<section id="top" class="hero-wash relative -mt-[76px] overflow-hidden pb-20 pt-[110px] lg:-mt-[88px] lg:pb-28 lg:pt-[150px]">
+  <div class="ghost-wrap" aria-hidden="true">
+    <span class="ghost-word a">ALS</span>
+    <span class="ghost-word b">COURSE</span>
   </div>
 
   <div class="shell relative">
