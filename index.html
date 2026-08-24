@@ -216,6 +216,15 @@ tailwind.config = {
   .rise-in { animation:rise .7s cubic-bezier(.16,1,.3,1) both; }
   /* Both stops are required: with fill-mode `both` and only a `from` stop the
      browser holds opacity:0 forever and the content never appears. */
+  /* FAQ accordion: the summary needs a visible affordance and a real hit
+     area - list-none removes the browser's default disclosure triangle. */
+  .acc > summary { padding-block:.55rem; }
+  .acc > summary::-webkit-details-marker { display:none; }
+  .acc-chevron { flex:none; color:#8A93A6; transition:transform .25s ease, color .25s ease; }
+  .acc[open] > summary .acc-chevron { transform:rotate(180deg); color:#D62828; }
+  .acc > summary:hover .acc-chevron { color:#D62828; }
+  .acc > summary:focus-visible { outline:2px solid #D62828; outline-offset:4px; border-radius:6px; }
+  @media (prefers-reduced-motion: reduce) { .acc-chevron { transition:none; } }
   @keyframes rise {
     from { opacity:0; transform:translateY(18px); }
     to   { opacity:1; transform:none; }
@@ -519,27 +528,27 @@ tailwind.config = {
       </div>
       <div class="divide-y divide-line border-t border-line" data-reveal>
         <details class="acc py-6" open>
-          <summary class="flex cursor-pointer items-center justify-between gap-6 list-none"><span class="display text-[17px] text-ink">What is an ALS certification, and why is it important for my medical career?</span></summary>
+          <summary class="flex cursor-pointer items-center justify-between gap-6 list-none"><span class="display text-[17px] text-ink">What is an ALS certification, and why is it important for my medical career?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <p class="copy mt-4 max-w-[66ch]">ALS (Advanced Life Support) certification equips you with the essential skills to respond to cardiac and other critical emergencies. This certification is highly valued in healthcare systems globally, especially in the UK and Australia, and is often a requirement or preferred qualification for roles in emergency and critical care.</p>
         </details>
         <details class="acc py-6">
-          <summary class="flex cursor-pointer items-center justify-between gap-6 list-none"><span class="display text-[17px] text-ink">Is this ALS course recognized internationally?</span></summary>
+          <summary class="flex cursor-pointer items-center justify-between gap-6 list-none"><span class="display text-[17px] text-ink">Is this ALS course recognized internationally?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <p class="copy mt-4 max-w-[66ch]">Yes. This is an ERC-accredited course &mdash; India&rsquo;s first ALS course recognised in the UK and Australia. The certificate is valid for up to 3 years and is respected by healthcare systems internationally.</p>
         </details>
         <details class="acc py-6">
-          <summary class="flex cursor-pointer items-center justify-between gap-6 list-none"><span class="display text-[17px] text-ink">What kind of practical skills will I learn in this course?</span></summary>
+          <summary class="flex cursor-pointer items-center justify-between gap-6 list-none"><span class="display text-[17px] text-ink">What kind of practical skills will I learn in this course?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <p class="copy mt-4 max-w-[66ch]">You will train in the ABCDE approach to cardiac arrest, CPR, airway management, recognising patients at risk of deterioration, and the non-technical skills needed to lead and collaborate with a resuscitation team under pressure &mdash; all through high-fidelity simulation.</p>
         </details>
         <details class="acc py-6">
-          <summary class="flex cursor-pointer items-center justify-between gap-6 list-none"><span class="display text-[17px] text-ink">Who can take this ALS course, and are there any prerequisites?</span></summary>
+          <summary class="flex cursor-pointer items-center justify-between gap-6 list-none"><span class="display text-[17px] text-ink">Who can take this ALS course, and are there any prerequisites?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <p class="copy mt-4 max-w-[66ch]">The course is designed for doctors and healthcare professionals, including those preparing for PLAB-2 and international medical practice. Contact us to confirm eligibility for your specific role and stage.</p>
         </details>
         <details class="acc py-6">
-          <summary class="flex cursor-pointer items-center justify-between gap-6 list-none"><span class="display text-[17px] text-ink">How is this course structured, and what can I expect during the training?</span></summary>
+          <summary class="flex cursor-pointer items-center justify-between gap-6 list-none"><span class="display text-[17px] text-ink">How is this course structured, and what can I expect during the training?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <p class="copy mt-4 max-w-[66ch]">It is a comprehensive 2-day course combining ERC-accredited curriculum content with realistic simulation-based learning, instant feedback and expert coaching, continuous assessment in airway management and emergency response, plus MCQ exams and CASTests.</p>
         </details>
         <details class="acc py-6">
-          <summary class="flex cursor-pointer items-center justify-between gap-6 list-none"><span class="display text-[17px] text-ink">What resources or materials will I receive as part of the ALS course?</span></summary>
+          <summary class="flex cursor-pointer items-center justify-between gap-6 list-none"><span class="display text-[17px] text-ink">What resources or materials will I receive as part of the ALS course?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <p class="copy mt-4 max-w-[66ch]">You receive access to essential ALS study materials alongside hands-on training with real-life simulations, delivered by ERC-certified instructors.</p>
         </details>
       </div>
