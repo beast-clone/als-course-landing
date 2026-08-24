@@ -40,7 +40,7 @@
 <link rel="apple-touch-icon" href="assets/favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- Structured data: Course + Organisation + LocalBusiness + FAQ, so this page is
      eligible for course, local and FAQ rich results and is legible to AI answer engines. -->
@@ -71,6 +71,17 @@
         "@type": "CourseInstance",
         "courseMode": "onsite",
         "courseWorkload": "P2D",
+        "instructor": [
+          { "@type": "Person", "name": "Matthew Donnelly", "jobTitle": "Course Director" },
+          { "@type": "Person", "name": "Martin Pearce", "jobTitle": "Course Director" },
+          { "@type": "Person", "name": "Jeswin Jacob", "jobTitle": "Course Organizer" },
+          { "@type": "Person", "name": "Dr David O'Brien", "jobTitle": "ALS Instructor" },
+          { "@type": "Person", "name": "Dr Hesham Turki", "jobTitle": "ALS Instructor" },
+          { "@type": "Person", "name": "Edward Chapman", "jobTitle": "ALS Instructor" },
+          { "@type": "Person", "name": "Ian Trueman", "jobTitle": "ALS Instructor" },
+          { "@type": "Person", "name": "Paula Shrubsole", "jobTitle": "ALS Instructor" },
+          { "@type": "Person", "name": "Scott Slater", "jobTitle": "ALS Instructor" }
+        ],
         "location": {
           "@type": "Place",
           "name": "Bangalore, India",
@@ -170,228 +181,336 @@
 <script>
 tailwind.config = {
   theme: {
-    container: { center: true, padding: '1.5rem', screens: { '2xl': '1200px' } },
     extend: {
       colors: {
-        ink:   '#0F172A',
-        body:  '#54607A',
-        red:   '#D62828',
-        redDeep: '#A81E1E',
-        paper: '#F6F7F9',
-        line:  'rgba(15,23,42,.10)',
+        brand:   '#0145F0',
+        brandDeep:'#0134B8',
+        brandSoft:'#E8EEFE',
+        ink:     '#011139',
+        body:    '#4B5563',
+        paper:   '#F5F7FC',
+        line:    '#E4E9F2'
       },
-      fontFamily: {
-        display: ['Sora','ui-sans-serif','system-ui','sans-serif'],
-        sans: ['Inter','ui-sans-serif','system-ui','sans-serif'],
-      },
-      borderRadius: { btn:'10px', card:'16px' },
-    },
-  },
+      fontFamily: { sans: ['Montserrat', 'system-ui', 'sans-serif'] },
+      borderRadius: { card: '30px', pill: '50px', soft: '20px' }
+    }
+  }
 }
 </script>
+
 <style>
-  :root { color-scheme: light; }
-  html { scroll-behavior: smooth; }
-  body { background:#fff; color:#0F172A; font-family:Inter,ui-sans-serif,system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
-  .display { font-family:Sora,ui-sans-serif,system-ui,sans-serif; font-weight:700; }
-  .t-h1 { font-size:clamp(2.5rem,5.6vw,64px); line-height:1.06; letter-spacing:-0.03em; }
-  .t-h2 { font-size:clamp(1.875rem,3.6vw,42px); line-height:1.14; letter-spacing:-0.025em; }
-  .t-h3 { font-size:clamp(1.125rem,1.7vw,21px); line-height:1.3; letter-spacing:-0.012em; font-weight:600; }
-  .lead { font-size:18px; line-height:30px; color:#54607A; max-width:58ch; }
-  p.copy { font-size:16px; line-height:27px; color:#54607A; max-width:66ch; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Montserrat',system-ui,sans-serif; color:#4B5563; background:#fff; -webkit-font-smoothing:antialiased; }
+  .shell { max-width:1240px; margin-inline:auto; padding-inline:24px; }
 
-  .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; height:52px; padding:0 24px;
-         border-radius:10px; font-size:15px; font-weight:600; white-space:nowrap;
-         transition:background-color .2s,color .2s,border-color .2s,transform .2s cubic-bezier(.16,1,.3,1); }
-  .btn:active { transform:translateY(1px); }
-  .btn-primary { background:#D62828; color:#fff; }
-  .btn-primary:hover { background:#A81E1E; }
-  .btn-ghost { background:#fff; color:#0F172A; border:1.5px solid rgba(15,23,42,.16); }
-  .btn-ghost:hover { border-color:#0F172A; }
+  h1,h2,h3 { color:#011139; font-weight:700; letter-spacing:-.01em; }
+  .t-h1 { font-size:clamp(2.25rem,1.3rem + 3.6vw,3.4rem); line-height:1.1; }
+  .t-h2 { font-size:clamp(1.75rem,1.15rem + 2.2vw,2.6rem); line-height:1.15; }
+  .t-h3 { font-size:1.125rem; line-height:1.35; }
+  .copy { color:#4B5563; font-size:1rem; line-height:1.7; }
+  .lead { color:#4B5563; font-size:1.0625rem; line-height:1.75; }
 
-  .eyebrow::before { content:""; width:18px; height:2px; background:#D62828; border-radius:1px; }
-  .rule { border-top:1px solid rgba(15,23,42,.10); }
+  /* Pill button with the reference's circular arrow badge. */
+  .btn { display:inline-flex; align-items:center; gap:.6rem; border-radius:50px;
+         padding:.8rem 1rem .8rem 1.45rem; font-size:.9375rem; font-weight:600;
+         transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease; }
+  .btn:hover { transform:translateY(-2px); }
+  .btn-primary { background:#0145F0; color:#fff; box-shadow:0 12px 28px -12px rgba(1,69,240,.65); }
+  .btn-primary:hover { background:#0134B8; }
+  .btn-ghost { background:#fff; color:#011139; box-shadow:0 10px 26px -14px rgba(1,17,57,.45); }
+  .btn-ghost:hover { background:#F5F7FC; }
+  .btn .nub { display:grid; place-items:center; width:29px; height:29px; border-radius:50%;
+              background:rgba(255,255,255,.22); flex:none; }
+  .btn-ghost .nub { background:#0145F0; color:#fff; }
+  .btn:focus-visible { outline:2px solid #0145F0; outline-offset:3px; }
 
-  /* Reveal: resting state is visible; the class only animates in from hidden. */
-  .rise-in { animation:rise .7s cubic-bezier(.16,1,.3,1) both; }
-  /* Both stops are required: with fill-mode `both` and only a `from` stop the
-     browser holds opacity:0 forever and the content never appears. */
-  /* FAQ accordion: the summary needs a visible affordance and a real hit
-     area - list-none removes the browser's default disclosure triangle. */
-  .acc > summary { padding-block:.55rem; }
+  .card { background:#fff; border-radius:30px; box-shadow:0 18px 50px -32px rgba(1,17,57,.35); }
+  .chip { display:inline-flex; align-items:center; gap:.55rem; border-radius:50px;
+          background:#fff; padding:.65rem 1.05rem; font-size:.8125rem; font-weight:600; color:#011139;
+          box-shadow:0 14px 36px -18px rgba(1,17,57,.45); }
+
+  /* Hero wash — the reference's soft blue gradient field. */
+  .hero-wash { background:
+      radial-gradient(1100px 620px at 78% 18%, rgba(1,69,240,.13), transparent 62%),
+      radial-gradient(820px 520px at 8% 84%, rgba(1,69,240,.10), transparent 60%),
+      linear-gradient(180deg,#F7F9FE 0%,#EDF1FD 48%,#FFFFFF 100%); }
+  .ghost-word { font-weight:700; letter-spacing:-.035em; line-height:.8;
+                font-size:clamp(4.5rem,15vw,13rem); color:#011139; opacity:.05;
+                white-space:nowrap; user-select:none; }
+
+  .rule { border-top:1px solid #E4E9F2; }
+
+  /* Marquee: duplicated track + translateX(-50%) loops seamlessly. */
+  /* Fade the ends so the loop reads as continuous rather than hard-clipped. */
+  .marquee { overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+            mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); }
+  .marquee-track { display:flex; width:max-content; animation:slide var(--dur,38s) linear infinite; }
+  .marquee:hover .marquee-track, .marquee:focus-within .marquee-track { animation-play-state:paused; }
+  @keyframes slide { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+
+  /* FAQ accordion: list-none removes the browser's disclosure triangle, so the
+     chevron is the only affordance the reader gets. */
+  .acc > summary { padding-block:.7rem; }
   .acc > summary::-webkit-details-marker { display:none; }
   .acc-chevron { flex:none; color:#8A93A6; transition:transform .25s ease, color .25s ease; }
-  .acc[open] > summary .acc-chevron { transform:rotate(180deg); color:#D62828; }
-  .acc > summary:hover .acc-chevron { color:#D62828; }
-  .acc > summary:focus-visible { outline:2px solid #D62828; outline-offset:4px; border-radius:6px; }
-  @media (prefers-reduced-motion: reduce) { .acc-chevron { transition:none; } }
+  .acc[open] > summary .acc-chevron { transform:rotate(180deg); color:#0145F0; }
+  .acc > summary:hover .acc-chevron { color:#0145F0; }
+  .acc > summary:focus-visible { outline:2px solid #0145F0; outline-offset:4px; border-radius:8px; }
+
+  /* Core-team carousel: the active slide is full colour and lifted, its
+     neighbours sit back in greyscale so the eye lands on one person. */
+  .team-slide { flex:0 0 auto; transition:filter .45s ease, opacity .45s ease, transform .45s ease; }
+  .team-slide[data-active="false"] { filter:grayscale(1); opacity:.45; transform:scale(.88); }
+  .team-slide[data-active="true"]  { filter:none; opacity:1; transform:scale(1); }
+  /* The visible dot is small, but the button around it is a 44px target. */
+  .team-dot { display:grid; place-items:center; height:44px; width:26px; background:none; border:0; cursor:pointer; }
+  .team-dot > i { display:block; width:9px; height:9px; border-radius:50%; background:#C7CFDE;
+                  transition:background .25s ease, width .25s ease; }
+  .team-dot[aria-selected="true"] > i { background:#0145F0; width:24px; border-radius:50px; }
+  .team-dot:focus-visible { outline:2px solid #0145F0; outline-offset:2px; border-radius:8px; }
+
+  /* Reveals. [data-reveal] has NO hidden resting state, so a blocked script
+     can never strand content invisible. Both keyframe stops are required:
+     with fill-mode `both` and only a `from`, the browser holds opacity 0. */
+  .rise-in { animation:rise .7s cubic-bezier(.16,1,.3,1) both; }
   @keyframes rise {
-    from { opacity:0; transform:translateY(18px); }
+    from { opacity:0; transform:translateY(20px); }
     to   { opacity:1; transform:none; }
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior:auto; }
     .rise-in { animation:none !important; }
+    .marquee-track { animation:none !important; }
+    .team-slide { transition:none !important; }
   }
 </style>
 </head>
 <body>
 
-<header id="nav" class="sticky top-0 z-50 border-b border-line bg-white/92 backdrop-blur-xl">
-  <div class="container flex h-[76px] items-center justify-between">
-    <a href="#top" class="inline-flex min-h-[44px] items-center display text-[19px] tracking-tight text-ink">ALS Course <span class="text-red">&nbsp;India</span></a>
+<header class="sticky top-0 z-50 bg-white/85 backdrop-blur-md">
+  <div class="shell flex items-center justify-between py-4">
+    <a href="#top" class="inline-flex min-h-[44px] items-center gap-2.5 text-[18px] font-bold tracking-tight text-ink">
+      <span class="grid h-9 w-9 place-items-center rounded-soft bg-brand text-white">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 000-7.8z"/></svg>
+      </span>
+      ALS Course&nbsp;<span class="text-brand">India</span>
+    </a>
+
     <nav class="hidden items-center gap-8 lg:flex" aria-label="Primary">
-      <a href="#why" class="inline-flex min-h-[44px] items-center text-[15px] text-body transition hover:text-ink">Why This Course</a>
-      <a href="#curriculum" class="inline-flex min-h-[44px] items-center text-[15px] text-body transition hover:text-ink">Curriculum</a>
-      <a href="#team" class="inline-flex min-h-[44px] items-center text-[15px] text-body transition hover:text-ink">Instructors</a>
-      <a href="#pricing" class="inline-flex min-h-[44px] items-center text-[15px] text-body transition hover:text-ink">Pricing</a>
-      <a href="#faq" class="inline-flex min-h-[44px] items-center text-[15px] text-body transition hover:text-ink">FAQ</a>
+      <a href="#why" class="text-[15px] font-medium text-body transition hover:text-brand">Why This Course</a>
+      <a href="#curriculum" class="text-[15px] font-medium text-body transition hover:text-brand">Curriculum</a>
+      <a href="#team" class="text-[15px] font-medium text-body transition hover:text-brand">Our Team</a>
+      <a href="#pricing" class="text-[15px] font-medium text-body transition hover:text-brand">Pricing</a>
+      <a href="#faq" class="text-[15px] font-medium text-body transition hover:text-brand">FAQ</a>
     </nav>
-    <div class="flex items-center gap-2">
-      <a href="#pricing" class="btn btn-primary hidden sm:inline-flex">Register Now</a>
-      <button id="navToggle" class="grid h-11 w-11 place-items-center rounded-btn border border-line bg-white lg:hidden" aria-label="Open menu" aria-expanded="false">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="1.75" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
-    </div>
+
+    <a href="#pricing" class="btn btn-primary hidden lg:inline-flex">Register Now
+      <span class="nub"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+    </a>
+
+    <button id="navToggle" class="grid h-11 w-11 place-items-center rounded-soft bg-paper lg:hidden" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#011139" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
   </div>
-  <div id="mobileMenu" class="hidden border-t border-line bg-white lg:hidden">
-    <div class="container flex flex-col py-3">
-      <a href="#why" class="rounded-btn px-3 py-3 text-[15px] hover:bg-paper">Why This Course</a>
-      <a href="#curriculum" class="rounded-btn px-3 py-3 text-[15px] hover:bg-paper">Curriculum</a>
-      <a href="#team" class="rounded-btn px-3 py-3 text-[15px] hover:bg-paper">Instructors</a>
-      <a href="#pricing" class="rounded-btn px-3 py-3 text-[15px] hover:bg-paper">Pricing</a>
-      <a href="#faq" class="rounded-btn px-3 py-3 text-[15px] hover:bg-paper">FAQ</a>
-      <a href="#pricing" class="btn btn-primary mt-2">Register Now</a>
+
+  <div id="mobileMenu" class="hidden lg:hidden">
+    <div class="shell rule flex flex-col pb-4 pt-2">
+      <a href="#why" class="inline-flex min-h-[44px] items-center text-[15px] font-medium text-body">Why This Course</a>
+      <a href="#curriculum" class="inline-flex min-h-[44px] items-center text-[15px] font-medium text-body">Curriculum</a>
+      <a href="#team" class="inline-flex min-h-[44px] items-center text-[15px] font-medium text-body">Our Team</a>
+      <a href="#pricing" class="inline-flex min-h-[44px] items-center text-[15px] font-medium text-body">Pricing</a>
+      <a href="#faq" class="inline-flex min-h-[44px] items-center text-[15px] font-medium text-body">FAQ</a>
+      <a href="#pricing" class="btn btn-primary mt-3 self-start">Register Now
+        <span class="nub"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
     </div>
   </div>
 </header>
 
 <main>
 
-<section id="top" class="pt-16 pb-14 lg:pt-24 lg:pb-20">
-  <div class="container">
-    <div class="grid items-center gap-14 lg:grid-cols-[1.05fr_.95fr] lg:gap-16">
+<section id="top" class="hero-wash relative overflow-hidden pb-20 pt-12 lg:pb-28 lg:pt-16">
+  <div class="pointer-events-none absolute inset-x-0 top-8 flex justify-center" aria-hidden="true">
+    <span class="ghost-word">ALS COURSE</span>
+  </div>
+
+  <div class="shell relative">
+    <div class="grid items-center gap-12 lg:grid-cols-[1.02fr_.98fr] lg:gap-10">
       <div>
-        <h1 class="rise-in display t-h1 text-ink" style="animation-delay:.05s">
-          ERC-Accredited Advanced Life Support Courses in India
+        <h1 class="rise-in t-h1" style="animation-delay:.05s">
+          ERC-Accredited <span class="text-brand">Advanced Life Support</span> Courses in India
         </h1>
-        <p class="rise-in mt-5 text-[18px] font-semibold text-red" style="animation-delay:.12s">
-          India's only course recognized in the UK &amp; Australia
-        </p>
-        <p class="rise-in lead mt-5" style="animation-delay:.18s">
+        <p class="rise-in lead mt-5 max-w-[52ch]" style="animation-delay:.12s">
           Enroll in our comprehensive 2-day Advanced Life Support (ALS) courses in India and gain the skills necessary to provide critical life support in emergencies.
         </p>
-        <!-- Course facts sit below the heading as a real meta row, not a kicker above it. -->
-        <dl class="rise-in mt-7 flex flex-wrap gap-x-8 gap-y-3 text-[14px]" style="animation-delay:.24s">
-          <div><dt class="text-body">Accreditation</dt><dd class="font-semibold text-ink">European Resuscitation Council</dd></div>
-          <div><dt class="text-body">Location</dt><dd class="font-semibold text-ink">Bangalore, India</dd></div>
-          <div><dt class="text-body">Duration</dt><dd class="font-semibold text-ink">2 days</dd></div>
+        <div class="rise-in mt-8 flex flex-wrap gap-3" style="animation-delay:.2s">
+          <a href="#pricing" class="btn btn-primary">Register Now
+            <span class="nub"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+          </a>
+          <a href="#pricing" class="btn btn-ghost">Available Batches
+            <span class="nub"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+          </a>
+        </div>
+
+        <dl class="rise-in mt-10 flex flex-wrap gap-x-9 gap-y-4" style="animation-delay:.27s">
+          <div><dt class="text-[13px] font-medium text-body">Accreditation</dt><dd class="text-[15px] font-bold text-ink">European Resuscitation Council</dd></div>
+          <div><dt class="text-[13px] font-medium text-body">Location</dt><dd class="text-[15px] font-bold text-ink">Bangalore, India</dd></div>
+          <div><dt class="text-[13px] font-medium text-body">Duration</dt><dd class="text-[15px] font-bold text-ink">2 days</dd></div>
         </dl>
-        <div class="rise-in mt-9 flex flex-wrap gap-3" style="animation-delay:.3s">
-          <a href="#pricing" class="btn btn-primary w-full sm:w-auto">Register Now</a>
-          <a href="#pricing" class="btn btn-ghost w-full sm:w-auto">Available Batches</a>
+      </div>
+
+      <div class="rise-in relative" style="animation-delay:.34s">
+        <figure class="overflow-hidden rounded-card shadow-[0_36px_90px_-46px_rgba(1,17,57,.6)]">
+          <img src="assets/training-1.jpg" width="1400" height="933" fetchpriority="high" decoding="async"
+               alt="Healthcare professionals performing bag-valve-mask ventilation during Advanced Life Support training"
+               class="h-full w-full object-cover" />
+        </figure>
+        <div class="chip absolute left-2 top-5 lg:-left-7">
+          <span class="grid h-7 w-7 place-items-center rounded-full bg-brandSoft text-brand">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+          </span>
+          UK &amp; Australia recognised
+        </div>
+        <div class="chip absolute -bottom-4 right-2 lg:-right-5">
+          <span class="grid h-7 w-7 place-items-center rounded-full bg-brandSoft text-brand">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </span>
+          2-day intensive
         </div>
       </div>
-      <figure class="rise-in overflow-hidden rounded-card shadow-[0_24px_60px_-32px_rgba(15,23,42,.4)]" style="animation-delay:.36s">
-        <img src="assets/training-1.jpg" width="1400" height="933" fetchpriority="high" decoding="async"
-             alt="Healthcare professionals performing bag-valve-mask ventilation during Advanced Life Support training"
-             class="h-full w-full object-cover" />
-      </figure>
     </div>
   </div>
 </section>
 
-<section id="why" class="bg-paper py-20 lg:py-24">
-  <div class="container">
-    <h2 data-reveal class="display t-h2 max-w-[20ch] text-ink">India's 1st ALS course recognized in the UK and Australia</h2>
-    <p class="copy mt-5">It's not just a course, it's your gateway to better opportunities.</p>
-
-    <div class="mt-14 grid gap-x-10 gap-y-10 md:grid-cols-3" data-reveal>
-      <div>
-        <h3 class="display t-h3 text-ink">ERC Accredited Certificate</h3>
-        <p class="copy mt-2.5">Get certified with an ERC-accredited ALS course, recognized by healthcare systems in the UK and Australia. Valid for up to 3 years, this certification opens doors to international medical practice.</p>
+<section class="bg-ink py-5">
+  <div class="marquee" style="--dur:34s">
+    <div class="marquee-track">
+      <div class="flex shrink-0 items-center gap-10 pr-10">
+        <span class="whitespace-nowrap text-[15px] font-semibold text-white">India&rsquo;s 1st ALS course recognized in the UK and Australia</span>
+        <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-brand"></span>
+        <span class="whitespace-nowrap text-[15px] font-semibold text-white/70">ERC-accredited</span>
+        <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-brand"></span>
+        <span class="whitespace-nowrap text-[15px] font-semibold text-white/70">Certificate valid 3 years</span>
+        <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-brand"></span>
+        <span class="whitespace-nowrap text-[15px] font-semibold text-white/70">Desirable for NHS jobs</span>
+        <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-brand"></span>
       </div>
-      <div>
-        <h3 class="display t-h3 text-ink">Qualified Instructors</h3>
-        <p class="copy mt-2.5">Learn from ERC-certified instructors who bring real-world experience to each session, ensuring you master essential ALS skills with confidence.</p>
-      </div>
-      <div>
-        <h3 class="display t-h3 text-ink">Desirable for NHS Jobs</h3>
-        <p class="copy mt-2.5">ALS certification is highly valued in NHS roles, often a requirement for positions in emergency and critical care settings.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="py-20 lg:py-24">
-  <div class="container">
-    <h2 data-reveal class="display t-h2 max-w-[22ch] text-ink">Complete and comprehensive ALS training experience</h2>
-    <div class="mt-14 grid gap-x-10 gap-y-10 md:grid-cols-3" data-reveal>
-      <div>
-        <h3 class="display t-h3 text-ink">Realistic Simulation-Based Learning</h3>
-        <p class="copy mt-2.5">Engage in high-fidelity simulations that replicate emergency situations, training you to respond with confidence and precision.</p>
-      </div>
-      <div>
-        <h3 class="display t-h3 text-ink">Instant Feedback &amp; Expert Coaching</h3>
-        <p class="copy mt-2.5">Benefit from instant feedback and hands-on coaching by certified instructors, ensuring rapid skill improvement and mastery.</p>
-      </div>
-      <div>
-        <h3 class="display t-h3 text-ink">Certification with Global Recognition</h3>
-        <p class="copy mt-2.5">Earn an ALS certificate that is respected worldwide, opening doors to opportunities in the UK, Australia, and more.</p>
+      <div class="flex shrink-0 items-center gap-10 pr-10" aria-hidden="true">
+        <span class="whitespace-nowrap text-[15px] font-semibold text-white">India&rsquo;s 1st ALS course recognized in the UK and Australia</span>
+        <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-brand"></span>
+        <span class="whitespace-nowrap text-[15px] font-semibold text-white/70">ERC-accredited</span>
+        <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-brand"></span>
+        <span class="whitespace-nowrap text-[15px] font-semibold text-white/70">Certificate valid 3 years</span>
+        <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-brand"></span>
+        <span class="whitespace-nowrap text-[15px] font-semibold text-white/70">Desirable for NHS jobs</span>
+        <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-brand"></span>
       </div>
     </div>
   </div>
 </section>
 
-<section id="curriculum" class="bg-paper py-20 lg:py-24">
-  <div class="container">
-    <h2 data-reveal class="display t-h2 max-w-[24ch] text-ink">Comprehensive, globally recognized ALS training with hands-on expertise</h2>
+<section id="why" class="py-20 lg:py-28">
+  <div class="shell">
+    <h2 data-reveal class="t-h2 max-w-[20ch]">India&rsquo;s 1st ALS course recognized in the UK and Australia</h2>
+    <p data-reveal class="copy mt-4 max-w-[58ch]">It&rsquo;s not just a course, it&rsquo;s your gateway to better opportunities.</p>
 
-    <div class="mt-14 space-y-16 lg:space-y-20" data-reveal>
+    <div data-reveal class="mt-12 grid gap-6 md:grid-cols-3">
+      <article class="card p-8">
+        <span class="grid h-12 w-12 place-items-center rounded-soft bg-brandSoft text-brand">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.2 13.8L7 22l5-3 5 3-1.2-8.2"/></svg>
+        </span>
+        <h3 class="t-h3 mt-6">ERC Accredited Certificate</h3>
+        <p class="copy mt-3">Get certified with an ERC-accredited ALS course, recognized by healthcare systems in the UK and Australia. Valid for up to 3 years, this certification opens doors to international medical practice.</p>
+      </article>
+      <article class="card p-8">
+        <span class="grid h-12 w-12 place-items-center rounded-soft bg-brandSoft text-brand">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13A4 4 0 0119 7"/></svg>
+        </span>
+        <h3 class="t-h3 mt-6">Qualified Instructors</h3>
+        <p class="copy mt-3">Learn from ERC-certified instructors who bring real-world experience to each session, ensuring you master essential ALS skills with confidence.</p>
+      </article>
+      <article class="card p-8">
+        <span class="grid h-12 w-12 place-items-center rounded-soft bg-brandSoft text-brand">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+        </span>
+        <h3 class="t-h3 mt-6">Desirable for NHS Jobs</h3>
+        <p class="copy mt-3">ALS certification is highly valued in NHS roles, often a requirement for positions in emergency and critical care settings.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="bg-paper py-20 lg:py-28">
+  <div class="shell">
+    <h2 data-reveal class="t-h2 max-w-[22ch]">Complete and comprehensive ALS training experience</h2>
+
+    <div data-reveal class="mt-12 grid gap-6 md:grid-cols-3">
+      <article class="card p-8">
+        <h3 class="t-h3">Realistic Simulation-Based Learning</h3>
+        <p class="copy mt-3">Engage in high-fidelity simulations that replicate emergency situations, training you to respond with confidence and precision.</p>
+      </article>
+      <article class="card p-8">
+        <h3 class="t-h3">Instant Feedback &amp; Expert Coaching</h3>
+        <p class="copy mt-3">Benefit from instant feedback and hands-on coaching by certified instructors, ensuring rapid skill improvement and mastery.</p>
+      </article>
+      <article class="card p-8">
+        <h3 class="t-h3">Certification with Global Recognition</h3>
+        <p class="copy mt-3">Earn an ALS certificate that is respected worldwide, opening doors to opportunities in the UK, Australia, and more.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="curriculum" class="py-20 lg:py-28">
+  <div class="shell">
+    <h2 data-reveal class="t-h2 max-w-[24ch]">Comprehensive, globally recognized ALS training with hands-on expertise</h2>
+
+    <div data-reveal class="mt-14 space-y-16 lg:space-y-24">
 
       <article class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div>
-          <h3 class="display t-h3 text-ink">ERC-Accredited Curriculum</h3>
-          <p class="copy mt-3">Gain expertise in advanced life support with our UK-recognized, ERC-accredited curriculum, developed to meet the highest European standards. This program equips you with the globally recognized skills necessary for handling critical emergencies in any healthcare setting.</p>
-          <ul class="mt-6 space-y-3">
-            <li class="flex gap-3 text-[15px] text-ink"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-red"></span>Acquire ALS expertise with a curriculum designed by the European Resuscitation Council, ensuring a globally respected certification.</li>
-            <li class="flex gap-3 text-[15px] text-ink"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-red"></span>Follow a standardized curriculum that maintains high-quality training, grounded in evidence-based resuscitation techniques.</li>
-            <li class="flex gap-3 text-[15px] text-ink"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-red"></span>Learn the latest life-saving methods as per ERC guidelines, recognized by healthcare authorities in the UK.</li>
+          <h3 class="text-[1.6rem] leading-tight">ERC-Accredited Curriculum</h3>
+          <p class="copy mt-4">Gain expertise in advanced life support with our UK-recognized, ERC-accredited curriculum, developed to meet the highest European standards. This program equips you with the globally recognized skills necessary for handling critical emergencies in any healthcare setting.</p>
+          <ul class="mt-6 space-y-3.5">
+            <li class="flex gap-3 text-[15px] text-ink"><span class="mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand text-white"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span>Acquire ALS expertise with a curriculum designed by the European Resuscitation Council, ensuring a globally respected certification.</li>
+            <li class="flex gap-3 text-[15px] text-ink"><span class="mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand text-white"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span>Follow a standardized curriculum that maintains high-quality training, grounded in evidence-based resuscitation techniques.</li>
+            <li class="flex gap-3 text-[15px] text-ink"><span class="mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand text-white"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span>Learn the latest life-saving methods as per ERC guidelines, recognized by healthcare authorities in the UK.</li>
           </ul>
         </div>
-        <figure class="overflow-hidden rounded-card">
-          <img src="assets/training-2.jpg" width="1400" height="933" loading="lazy" decoding="async"
+        <figure class="overflow-hidden rounded-card shadow-[0_30px_70px_-44px_rgba(1,17,57,.5)]">
+          <img src="assets/training-2.jpg" width="1400" height="1001" loading="lazy" decoding="async"
                alt="ERC-accredited Advanced Life Support curriculum training session" class="h-full w-full object-cover" />
         </figure>
       </article>
 
       <article class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-        <figure class="order-2 overflow-hidden rounded-card lg:order-1">
+        <figure class="order-2 overflow-hidden rounded-card shadow-[0_30px_70px_-44px_rgba(1,17,57,.5)] lg:order-1">
           <img src="assets/training-3.jpg" width="1400" height="933" loading="lazy" decoding="async"
                alt="Medical team practising cardiac arrest management and CPR during ALS training" class="h-full w-full object-cover" />
         </figure>
         <div class="order-1 lg:order-2">
-          <h3 class="display t-h3 text-ink">Master Life-Saving Techniques</h3>
-          <p class="copy mt-3">Develop critical skills to effectively manage cardiac emergencies and lead medical teams with confidence. This course focuses on practical training and leadership development for comprehensive emergency response.</p>
-          <ul class="mt-6 space-y-3">
-            <li class="flex gap-3 text-[15px] text-ink"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-red"></span>Train to identify cardiac arrest causes and manage patients at risk of deterioration, preparing you for critical emergencies.</li>
-            <li class="flex gap-3 text-[15px] text-ink"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-red"></span>Master the ABCDE approach to manage cardiac arrests, CPR, and teamwork during high-pressure situations.</li>
-            <li class="flex gap-3 text-[15px] text-ink"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-red"></span>Build non-technical skills to lead and collaborate effectively, ensuring strong team performance in emergencies.</li>
+          <h3 class="text-[1.6rem] leading-tight">Master Life-Saving Techniques</h3>
+          <p class="copy mt-4">Develop critical skills to effectively manage cardiac emergencies and lead medical teams with confidence. This course focuses on practical training and leadership development for comprehensive emergency response.</p>
+          <ul class="mt-6 space-y-3.5">
+            <li class="flex gap-3 text-[15px] text-ink"><span class="mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand text-white"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span>Train to identify cardiac arrest causes and manage patients at risk of deterioration, preparing you for critical emergencies.</li>
+            <li class="flex gap-3 text-[15px] text-ink"><span class="mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand text-white"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span>Master the ABCDE approach to manage cardiac arrests, CPR, and teamwork during high-pressure situations.</li>
+            <li class="flex gap-3 text-[15px] text-ink"><span class="mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand text-white"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span>Build non-technical skills to lead and collaborate effectively, ensuring strong team performance in emergencies.</li>
           </ul>
         </div>
       </article>
 
       <article class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div>
-          <h3 class="display t-h3 text-ink">Hands-On Skill Assessment</h3>
-          <p class="copy mt-3">Ensure complete proficiency with continuous assessments and real-world scenario training led by ERC-certified experts. This comprehensive approach builds readiness and confidence to handle life-saving procedures.</p>
-          <ul class="mt-6 space-y-3">
-            <li class="flex gap-3 text-[15px] text-ink"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-red"></span>Receive ongoing assessments in airway management and emergency responses, ensuring readiness at all times.</li>
-            <li class="flex gap-3 text-[15px] text-ink"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-red"></span>Engage in MCQ exams and CASTests that cover essential emergency response skills for high-pressure scenarios.</li>
-            <li class="flex gap-3 text-[15px] text-ink"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-red"></span>Learn from certified trainers through immersive sessions that build practical knowledge and real-world application skills.</li>
+          <h3 class="text-[1.6rem] leading-tight">Hands-On Skill Assessment</h3>
+          <p class="copy mt-4">Ensure complete proficiency with continuous assessments and real-world scenario training led by ERC-certified experts. This comprehensive approach builds readiness and confidence to handle life-saving procedures.</p>
+          <ul class="mt-6 space-y-3.5">
+            <li class="flex gap-3 text-[15px] text-ink"><span class="mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand text-white"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span>Receive ongoing assessments in airway management and emergency responses, ensuring readiness at all times.</li>
+            <li class="flex gap-3 text-[15px] text-ink"><span class="mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand text-white"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span>Engage in MCQ exams and CASTests that cover essential emergency response skills for high-pressure scenarios.</li>
+            <li class="flex gap-3 text-[15px] text-ink"><span class="mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand text-white"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span>Learn from certified trainers through immersive sessions that build practical knowledge and real-world application skills.</li>
           </ul>
         </div>
-        <figure class="overflow-hidden rounded-card">
+        <figure class="overflow-hidden rounded-card shadow-[0_30px_70px_-44px_rgba(1,17,57,.5)]">
           <img src="assets/course-1.jpg" width="1400" height="933" loading="lazy" decoding="async"
                alt="Hands-on ALS skill assessment with ERC-certified instructors" class="h-full w-full object-cover" />
         </figure>
@@ -401,238 +520,365 @@ tailwind.config = {
   </div>
 </section>
 
-<section class="py-20 lg:py-24">
-  <div class="container">
-    <figure class="mx-auto max-w-[68ch] text-center" data-reveal>
-      <blockquote class="display text-[22px] leading-relaxed text-ink lg:text-[26px]">
+<section class="bg-paper py-20 lg:py-28">
+  <div class="shell">
+    <figure data-reveal class="card mx-auto max-w-[74ch] px-8 py-12 text-center lg:px-14">
+      <span class="mx-auto grid h-12 w-12 place-items-center rounded-full bg-brandSoft text-brand">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.5 6C6.5 6 4 8.5 4 11.5S6.2 17 9 17c.4 0 .8 0 1.1-.1-.6 1.4-2 2.5-3.6 2.8-.4.1-.6.5-.5.9.1.3.4.5.7.5h.2c3.6-.7 6.1-3.8 6.1-7.6V11.5C13 8.5 12.5 6 9.5 6zm10 0C16.5 6 14 8.5 14 11.5S16.2 17 19 17c.4 0 .8 0 1.1-.1-.6 1.4-2 2.5-3.6 2.8-.4.1-.6.5-.5.9.1.3.4.5.7.5h.2c3.6-.7 6.1-3.8 6.1-7.6V11.5C23 8.5 22.5 6 19.5 6z"/></svg>
+      </span>
+      <blockquote class="mt-7 text-[19px] font-medium leading-relaxed text-ink lg:text-[22px]">
         &ldquo;The ALS course was incredibly thorough and far superior to any other training I&rsquo;ve received. The hands-on experience, combined with ERC-certified trainers who explained each concept in detail, gave me the confidence to handle real-life emergencies. I walked away not only ready for my PLAB-2 but with skills I could apply immediately in a clinical setting.&rdquo;
       </blockquote>
       <figcaption class="mt-7">
-        <div class="text-[15px] font-semibold text-ink">Dr Rahul Mehta</div>
+        <div class="text-[15px] font-bold text-ink">Dr Rahul Mehta</div>
         <div class="text-[14px] text-body">Batch of July 2024</div>
       </figcaption>
     </figure>
   </div>
 </section>
 
-<section id="team" class="bg-paper py-20 lg:py-24">
-  <div class="container">
-    <h2 data-reveal class="display t-h2 max-w-[18ch] text-ink">The core team</h2>
-    <p class="copy mt-5">People who make it happen.</p>
+<section id="team" class="py-20 lg:py-28">
+  <div class="shell">
+    <h2 data-reveal class="t-h2 text-center">The Core Team. <span class="text-brand">People who make it happen.</span></h2>
 
-    <div class="mt-12 rounded-card bg-white p-8 ring-1 ring-line">
-      <p class="text-[13px] font-semibold uppercase tracking-[.07em] text-red">Course Director</p>
-      <p class="display mt-2 text-[24px] text-ink">Martin Pearce</p>
+    <!-- Carousel. The track is centred on the active slide by transform, and the
+         markup order matches the source site's rotation. -->
+    <div data-reveal class="relative mt-14">
+      <div class="overflow-hidden">
+        <div id="teamTrack" class="flex items-center justify-center gap-5 lg:gap-8">
+
+          <figure class="team-slide w-[230px] lg:w-[320px]" data-active="false">
+            <img src="assets/team/martin-pearce.jpg" width="760" height="760" loading="lazy" decoding="async"
+                 alt="Martin Pearce, Course Director" class="w-full rounded-card object-cover" />
+            <figcaption class="mt-5 text-center">
+              <div class="text-[13px] font-semibold uppercase tracking-[.08em] text-brand">Course Director</div>
+              <div class="mt-1 text-[19px] font-bold text-ink">Martin Pearce</div>
+            </figcaption>
+          </figure>
+
+          <figure class="team-slide w-[230px] lg:w-[320px]" data-active="true">
+            <img src="assets/team/matthew-donnelly.jpg" width="760" height="760" loading="lazy" decoding="async"
+                 alt="Matthew Donnelly, Course Director" class="w-full rounded-card object-cover" />
+            <figcaption class="mt-5 text-center">
+              <div class="text-[13px] font-semibold uppercase tracking-[.08em] text-brand">Course Director</div>
+              <div class="mt-1 text-[19px] font-bold text-ink">Matthew Donnelly</div>
+            </figcaption>
+          </figure>
+
+          <figure class="team-slide w-[230px] lg:w-[320px]" data-active="false">
+            <img src="assets/team/jeswin-jacob.jpg" width="760" height="760" loading="lazy" decoding="async"
+                 alt="Jeswin Jacob, Course Organizer" class="w-full rounded-card object-cover" />
+            <figcaption class="mt-5 text-center">
+              <div class="text-[13px] font-semibold uppercase tracking-[.08em] text-brand">Course Organizer</div>
+              <div class="mt-1 text-[19px] font-bold text-ink">Jeswin Jacob</div>
+            </figcaption>
+          </figure>
+
+        </div>
+      </div>
+
+      <div class="mt-9 flex items-center justify-center gap-4">
+        <button id="teamPrev" class="grid h-11 w-11 place-items-center rounded-full bg-white text-ink shadow-[0_10px_26px_-14px_rgba(1,17,57,.5)] transition hover:bg-brand hover:text-white" aria-label="Previous team member">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div id="teamDots" class="flex items-center gap-2.5" role="tablist" aria-label="Team members"></div>
+        <button id="teamNext" class="grid h-11 w-11 place-items-center rounded-full bg-white text-ink shadow-[0_10px_26px_-14px_rgba(1,17,57,.5)] transition hover:bg-brand hover:text-white" aria-label="Next team member">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
     </div>
 
-    <h3 class="display t-h3 mt-14 text-ink">Meet Our Instructors</h3>
-    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-reveal>
-      <div class="rounded-card bg-white p-5 text-center ring-1 ring-line">
+    <h3 data-reveal class="mt-20 text-center text-[1.5rem]">Meet Our Instructors</h3>
+    <div data-reveal class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <figure class="card p-5 text-center">
         <img src="assets/team/david-obrien.jpg" width="560" height="560" loading="lazy" decoding="async"
-             alt="Dr David O'Brien, ALS Instructor" class="mx-auto aspect-square w-full max-w-[220px] rounded-card object-cover" />
-        <p class="display mt-4 text-[17px] text-ink">Dr David O&rsquo;Brien</p>
-        <p class="text-[14px] text-body">ALS Instructor</p>
-      </div>
-      <div class="rounded-card bg-white p-5 text-center ring-1 ring-line">
+             alt="Dr David O'Brien, ALS Instructor" class="mx-auto aspect-square w-full max-w-[210px] rounded-soft object-cover" />
+        <figcaption class="mt-4"><div class="text-[17px] font-bold text-ink">Dr David O&rsquo;Brien</div><div class="text-[14px] text-body">ALS Instructor</div></figcaption>
+      </figure>
+      <figure class="card p-5 text-center">
         <img src="assets/team/hesham-turki.png" width="560" height="560" loading="lazy" decoding="async"
-             alt="Dr Hesham Turki, ALS Instructor" class="mx-auto aspect-square w-full max-w-[220px] rounded-card object-cover" />
-        <p class="display mt-4 text-[17px] text-ink">Dr Hesham Turki</p>
-        <p class="text-[14px] text-body">ALS Instructor</p>
-      </div>
-      <div class="rounded-card bg-white p-5 text-center ring-1 ring-line">
+             alt="Dr Hesham Turki, ALS Instructor" class="mx-auto aspect-square w-full max-w-[210px] rounded-soft object-cover" />
+        <figcaption class="mt-4"><div class="text-[17px] font-bold text-ink">Dr Hesham Turki</div><div class="text-[14px] text-body">ALS Instructor</div></figcaption>
+      </figure>
+      <figure class="card p-5 text-center">
         <img src="assets/team/edward-chapman.png" width="560" height="560" loading="lazy" decoding="async"
-             alt="Edward Chapman, ALS Instructor" class="mx-auto aspect-square w-full max-w-[220px] rounded-card object-cover" />
-        <p class="display mt-4 text-[17px] text-ink">Edward Chapman</p>
-        <p class="text-[14px] text-body">ALS Instructor</p>
-      </div>
-      <div class="rounded-card bg-white p-5 text-center ring-1 ring-line">
+             alt="Edward Chapman, ALS Instructor" class="mx-auto aspect-square w-full max-w-[210px] rounded-soft object-cover" />
+        <figcaption class="mt-4"><div class="text-[17px] font-bold text-ink">Edward Chapman</div><div class="text-[14px] text-body">ALS Instructor</div></figcaption>
+      </figure>
+      <figure class="card p-5 text-center">
         <img src="assets/team/ian-trueman.png" width="560" height="560" loading="lazy" decoding="async"
-             alt="Ian Trueman, ALS Instructor" class="mx-auto aspect-square w-full max-w-[220px] rounded-card object-cover" />
-        <p class="display mt-4 text-[17px] text-ink">Ian Trueman</p>
-        <p class="text-[14px] text-body">ALS Instructor</p>
-      </div>
-      <div class="rounded-card bg-white p-5 text-center ring-1 ring-line">
+             alt="Ian Trueman, ALS Instructor" class="mx-auto aspect-square w-full max-w-[210px] rounded-soft object-cover" />
+        <figcaption class="mt-4"><div class="text-[17px] font-bold text-ink">Ian Trueman</div><div class="text-[14px] text-body">ALS Instructor</div></figcaption>
+      </figure>
+      <figure class="card p-5 text-center">
         <img src="assets/team/paula-shrubsole.png" width="560" height="560" loading="lazy" decoding="async"
-             alt="Paula Shrubsole, ALS Instructor" class="mx-auto aspect-square w-full max-w-[220px] rounded-card object-cover" />
-        <p class="display mt-4 text-[17px] text-ink">Paula Shrubsole</p>
-        <p class="text-[14px] text-body">ALS Instructor</p>
-      </div>
-      <div class="rounded-card bg-white p-5 text-center ring-1 ring-line">
+             alt="Paula Shrubsole, ALS Instructor" class="mx-auto aspect-square w-full max-w-[210px] rounded-soft object-cover" />
+        <figcaption class="mt-4"><div class="text-[17px] font-bold text-ink">Paula Shrubsole</div><div class="text-[14px] text-body">ALS Instructor</div></figcaption>
+      </figure>
+      <figure class="card p-5 text-center">
         <img src="assets/team/scott-slater.png" width="560" height="560" loading="lazy" decoding="async"
-             alt="Scott Slater, ALS Instructor" class="mx-auto aspect-square w-full max-w-[220px] rounded-card object-cover" />
-        <p class="display mt-4 text-[17px] text-ink">Scott Slater</p>
-        <p class="text-[14px] text-body">ALS Instructor</p>
-      </div>
+             alt="Scott Slater, ALS Instructor" class="mx-auto aspect-square w-full max-w-[210px] rounded-soft object-cover" />
+        <figcaption class="mt-4"><div class="text-[17px] font-bold text-ink">Scott Slater</div><div class="text-[14px] text-body">ALS Instructor</div></figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<section id="pricing" class="py-20 lg:py-24">
-  <div class="container">
-    <h2 data-reveal class="display t-h2 max-w-[22ch] text-ink">Gain essential skills with our ERC-accredited ALS training</h2>
+<section id="pricing" class="bg-paper py-20 lg:py-28">
+  <div class="shell">
+    <h2 data-reveal class="t-h2 max-w-[22ch]">Gain essential skills with our ERC-accredited ALS training</h2>
 
-    <div class="mt-12 grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16" data-reveal>
-      <div class="rounded-card bg-ink p-8 text-white lg:p-10">
-        <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-[13px] font-semibold uppercase tracking-[.07em] text-white/60">
-          <span>Limited seats</span><span aria-hidden="true">·</span><span>First-come-first-serve</span>
+    <div data-reveal class="mt-12 grid gap-8 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
+      <div class="relative overflow-hidden rounded-card bg-ink p-9 text-white lg:p-11">
+        <div class="pointer-events-none absolute -right-16 -top-16 h-52 w-52 rounded-full bg-brand/25 blur-2xl" aria-hidden="true"></div>
+        <div class="relative">
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-[12px] font-semibold uppercase tracking-[.09em] text-white/60">
+            <span>Limited seats</span><span aria-hidden="true">&middot;</span><span>First-come-first-serve</span>
+          </div>
+          <p class="mt-6 text-[56px] font-bold leading-none">&pound;650</p>
+          <a href="#contact" class="btn btn-primary mt-8">Check Availability
+            <span class="nub"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+          </a>
+          <p class="mt-5 text-[14px] text-white/60">Click on the &lsquo;Check Availability&rsquo; button above.</p>
         </div>
-        <p class="display mt-6 text-[52px] leading-none">£650</p>
-        <a href="#contact" class="btn btn-primary mt-8 w-full sm:w-auto">Check Availability</a>
-        <p class="mt-4 text-[14px] text-white/60">Click on the &lsquo;Check Availability&rsquo; button above.</p>
       </div>
 
       <div>
-        <h3 class="display t-h3 text-ink">What&rsquo;s included</h3>
-        <ul class="mt-6 space-y-3.5">
-          <li class="flex gap-3 text-[15px] text-ink"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-red"></span>ERC-accredited, globally recognized</li>
-          <li class="flex gap-3 text-[15px] text-ink"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-red"></span>Hands-on training with real-life simulations</li>
-          <li class="flex gap-3 text-[15px] text-ink"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-red"></span>Trained by certified instructors</li>
-          <li class="flex gap-3 text-[15px] text-ink"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-red"></span>Access to essential ALS study materials</li>
-          <li class="flex gap-3 text-[15px] text-ink"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-red"></span>Build confidence for emergency response</li>
-          <li class="flex gap-3 text-[15px] text-ink"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-red"></span>Certification valid in the UK and Australia</li>
+        <h3 class="text-[1.5rem] leading-tight">What&rsquo;s included</h3>
+        <ul class="mt-7 space-y-4">
+          <li class="flex gap-3.5 text-[15px] text-ink"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand text-white"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span>ERC-accredited, globally recognized</li>
+          <li class="flex gap-3.5 text-[15px] text-ink"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand text-white"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span>Hands-on training with real-life simulations</li>
+          <li class="flex gap-3.5 text-[15px] text-ink"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand text-white"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span>Trained by certified instructors</li>
+          <li class="flex gap-3.5 text-[15px] text-ink"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand text-white"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span>Access to essential ALS study materials</li>
+          <li class="flex gap-3.5 text-[15px] text-ink"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand text-white"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span>Build confidence for emergency response</li>
+          <li class="flex gap-3.5 text-[15px] text-ink"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand text-white"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span>Certification valid in the UK and Australia</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<section class="bg-paper py-20 lg:py-24">
-  <div class="container">
-    <h2 data-reveal class="display t-h2 max-w-[18ch] text-ink">Trusted by hundreds of doctors</h2>
+<section class="py-20 lg:py-28">
+  <div class="shell">
+    <h2 data-reveal class="t-h2 max-w-[18ch]">Trusted by hundreds of doctors</h2>
 
-    <div class="mt-12 grid gap-5 md:grid-cols-3" data-reveal>
-      <figure class="rounded-card bg-white p-7 ring-1 ring-line">
-        <p class="text-[13px] font-semibold text-red">5/5</p>
-        <blockquote class="mt-3 text-[15px] leading-relaxed text-ink">&ldquo;An informative and exceptionally well-organized ALS course. The curriculum was comprehensive, and each session built perfectly on the last, making complex concepts easy to grasp. I feel more confident.&rdquo;</blockquote>
-        <figcaption class="mt-6"><div class="text-[14px] font-semibold text-ink">Dr. Jeevan</div><div class="text-[13px] text-body">Batch: March 2024</div></figcaption>
+    <div data-reveal class="mt-12 grid gap-6 md:grid-cols-3">
+      <figure class="card p-8">
+        <div class="flex gap-1 text-brand" aria-label="Rated 5 out of 5">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
+        </div>
+        <blockquote class="mt-4 text-[15px] leading-relaxed text-ink">&ldquo;An informative and exceptionally well-organized ALS course. The curriculum was comprehensive, and each session built perfectly on the last, making complex concepts easy to grasp. I feel more confident.&rdquo;</blockquote>
+        <figcaption class="mt-6"><div class="text-[14px] font-bold text-ink">Dr. Jeevan</div><div class="text-[13px] text-body">Batch: March 2024</div></figcaption>
       </figure>
-      <figure class="rounded-card bg-white p-7 ring-1 ring-line">
-        <p class="text-[13px] font-semibold text-red">5/5</p>
-        <blockquote class="mt-3 text-[15px] leading-relaxed text-ink">&ldquo;I learned essential ALS protocols tailored for hospital-based systems, which is exactly what I needed for my role. The course is a fantastic blend of theory and practice, making me feel prepared for real-world medical challenges.&rdquo;</blockquote>
-        <figcaption class="mt-6"><div class="text-[14px] font-semibold text-ink">Dr. Krishaa N</div><div class="text-[13px] text-body">Batch: January 2024</div></figcaption>
+      <figure class="card p-8">
+        <div class="flex gap-1 text-brand" aria-label="Rated 5 out of 5">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
+        </div>
+        <blockquote class="mt-4 text-[15px] leading-relaxed text-ink">&ldquo;I learned essential ALS protocols tailored for hospital-based systems, which is exactly what I needed for my role. The course is a fantastic blend of theory and practice, making me feel prepared for real-world medical challenges.&rdquo;</blockquote>
+        <figcaption class="mt-6"><div class="text-[14px] font-bold text-ink">Dr. Krishaa N</div><div class="text-[13px] text-body">Batch: January 2024</div></figcaption>
       </figure>
-      <figure class="rounded-card bg-white p-7 ring-1 ring-line">
-        <p class="text-[13px] font-semibold text-red">5/5</p>
-        <blockquote class="mt-3 text-[15px] leading-relaxed text-ink">&ldquo;The course content was incredibly thorough and detailed, unlike any other training I&rsquo;ve attended. It covered every aspect of ALS, and the hands-on practice helped me gain the confidence to apply these skills effectively.&rdquo;</blockquote>
-        <figcaption class="mt-6"><div class="text-[14px] font-semibold text-ink">Dr. Natasha</div><div class="text-[13px] text-body">Batch: July 2023</div></figcaption>
+      <figure class="card p-8">
+        <div class="flex gap-1 text-brand" aria-label="Rated 5 out of 5">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
+        </div>
+        <blockquote class="mt-4 text-[15px] leading-relaxed text-ink">&ldquo;The course content was incredibly thorough and detailed, unlike any other training I&rsquo;ve attended. It covered every aspect of ALS, and the hands-on practice helped me gain the confidence to apply these skills effectively.&rdquo;</blockquote>
+        <figcaption class="mt-6"><div class="text-[14px] font-bold text-ink">Dr. Natasha</div><div class="text-[13px] text-body">Batch: July 2023</div></figcaption>
       </figure>
     </div>
   </div>
 </section>
 
-<section id="faq" class="py-20 lg:py-24">
-  <div class="container">
+<section id="faq" class="bg-paper py-20 lg:py-28">
+  <div class="shell">
     <div class="grid gap-12 lg:grid-cols-[1fr_1.5fr] lg:gap-20">
-      <div class="lg:sticky lg:top-[100px] lg:self-start">
-        <h2 data-reveal class="display t-h2 text-ink">Have a question? We&rsquo;re here to answer.</h2>
+      <div class="lg:sticky lg:top-[104px] lg:self-start">
+        <h2 data-reveal class="t-h2">Have a question? We&rsquo;re here to answer.</h2>
       </div>
-      <div class="divide-y divide-line border-t border-line" data-reveal>
-        <details class="acc py-6" open>
-          <summary class="flex cursor-pointer items-center justify-between gap-6 list-none"><span class="display text-[17px] text-ink">What is an ALS certification, and why is it important for my medical career?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
-          <p class="copy mt-4 max-w-[66ch]">ALS (Advanced Life Support) certification equips you with the essential skills to respond to cardiac and other critical emergencies. This certification is highly valued in healthcare systems globally, especially in the UK and Australia, and is often a requirement or preferred qualification for roles in emergency and critical care.</p>
+      <div data-reveal class="card divide-y divide-line px-7 lg:px-9">
+        <details class="acc py-5" open>
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6"><span class="text-[16px] font-semibold text-ink">What is an ALS certification, and why is it important for my medical career?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p class="copy mt-3 max-w-[66ch]">ALS (Advanced Life Support) certification equips you with the essential skills to respond to cardiac and other critical emergencies. This certification is highly valued in healthcare systems globally, especially in the UK and Australia, and is often a requirement or preferred qualification for roles in emergency and critical care.</p>
         </details>
-        <details class="acc py-6">
-          <summary class="flex cursor-pointer items-center justify-between gap-6 list-none"><span class="display text-[17px] text-ink">Is this ALS course recognized internationally?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
-          <p class="copy mt-4 max-w-[66ch]">Yes. This is an ERC-accredited course &mdash; India&rsquo;s first ALS course recognised in the UK and Australia. The certificate is valid for up to 3 years and is respected by healthcare systems internationally.</p>
+        <details class="acc py-5">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6"><span class="text-[16px] font-semibold text-ink">Is this ALS course recognized internationally?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p class="copy mt-3 max-w-[66ch]">Yes. This is an ERC-accredited course &mdash; India&rsquo;s first ALS course recognised in the UK and Australia. The certificate is valid for up to 3 years and is respected by healthcare systems internationally.</p>
         </details>
-        <details class="acc py-6">
-          <summary class="flex cursor-pointer items-center justify-between gap-6 list-none"><span class="display text-[17px] text-ink">What kind of practical skills will I learn in this course?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
-          <p class="copy mt-4 max-w-[66ch]">You will train in the ABCDE approach to cardiac arrest, CPR, airway management, recognising patients at risk of deterioration, and the non-technical skills needed to lead and collaborate with a resuscitation team under pressure &mdash; all through high-fidelity simulation.</p>
+        <details class="acc py-5">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6"><span class="text-[16px] font-semibold text-ink">What kind of practical skills will I learn in this course?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p class="copy mt-3 max-w-[66ch]">You will train in the ABCDE approach to cardiac arrest, CPR, airway management, recognising patients at risk of deterioration, and the non-technical skills needed to lead and collaborate with a resuscitation team under pressure &mdash; all through high-fidelity simulation.</p>
         </details>
-        <details class="acc py-6">
-          <summary class="flex cursor-pointer items-center justify-between gap-6 list-none"><span class="display text-[17px] text-ink">Who can take this ALS course, and are there any prerequisites?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
-          <p class="copy mt-4 max-w-[66ch]">The course is designed for doctors and healthcare professionals, including those preparing for PLAB-2 and international medical practice. Contact us to confirm eligibility for your specific role and stage.</p>
+        <details class="acc py-5">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6"><span class="text-[16px] font-semibold text-ink">Who can take this ALS course, and are there any prerequisites?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p class="copy mt-3 max-w-[66ch]">The course is designed for doctors and healthcare professionals, including those preparing for PLAB-2 and international medical practice. Contact us to confirm eligibility for your specific role and stage.</p>
         </details>
-        <details class="acc py-6">
-          <summary class="flex cursor-pointer items-center justify-between gap-6 list-none"><span class="display text-[17px] text-ink">How is this course structured, and what can I expect during the training?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
-          <p class="copy mt-4 max-w-[66ch]">It is a comprehensive 2-day course combining ERC-accredited curriculum content with realistic simulation-based learning, instant feedback and expert coaching, continuous assessment in airway management and emergency response, plus MCQ exams and CASTests.</p>
+        <details class="acc py-5">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6"><span class="text-[16px] font-semibold text-ink">How is this course structured, and what can I expect during the training?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p class="copy mt-3 max-w-[66ch]">It is a comprehensive 2-day course combining ERC-accredited curriculum content with realistic simulation-based learning, instant feedback and expert coaching, continuous assessment in airway management and emergency response, plus MCQ exams and CASTests.</p>
         </details>
-        <details class="acc py-6">
-          <summary class="flex cursor-pointer items-center justify-between gap-6 list-none"><span class="display text-[17px] text-ink">What resources or materials will I receive as part of the ALS course?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
-          <p class="copy mt-4 max-w-[66ch]">You receive access to essential ALS study materials alongside hands-on training with real-life simulations, delivered by ERC-certified instructors.</p>
+        <details class="acc py-5">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6"><span class="text-[16px] font-semibold text-ink">What resources or materials will I receive as part of the ALS course?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p class="copy mt-3 max-w-[66ch]">You receive access to essential ALS study materials alongside hands-on training with real-life simulations, delivered by ERC-certified instructors.</p>
         </details>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="bg-paper py-20 lg:py-24">
-  <div class="container">
-    <h2 data-reveal class="display t-h2 max-w-[20ch] text-ink">We have a fair &amp; transparent refund policy</h2>
-    <div class="mt-10 grid gap-x-10 gap-y-8 md:grid-cols-3" data-reveal>
-      <div class="rule pt-6">
-        <p class="display text-[15px] text-red">45 days or more before</p>
-        <p class="copy mt-2">Cancel 45 days or more before the course: <strong class="font-semibold text-ink">100% refund</strong>.</p>
-      </div>
-      <div class="rule pt-6">
-        <p class="display text-[15px] text-red">Between 45 and 14 days</p>
-        <p class="copy mt-2">Cancel between 45 and 14 days before the course: <strong class="font-semibold text-ink">50% refund</strong> if your seat is not resold; <strong class="font-semibold text-ink">90% refund</strong> if your seat is resold.</p>
-      </div>
-      <div class="rule pt-6">
-        <p class="display text-[15px] text-red">Within 14 days</p>
-        <p class="copy mt-2">Cancel within 14 days of the course: <strong class="font-semibold text-ink">no refund</strong>, unless your seat is resold, in which case you get a <strong class="font-semibold text-ink">90% refund</strong>.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="contact" class="py-20 lg:py-24">
-  <div class="container">
-    <div class="rounded-card bg-ink px-8 py-16 text-center text-white lg:px-16 lg:py-20">
-      <h2 data-reveal class="display t-h2 mx-auto max-w-[16ch]">Add ALS to your portfolio. Enroll today!</h2>
-      <p class="mx-auto mt-6 max-w-[56ch] text-[17px] leading-relaxed text-white/70">
-        Ready to elevate your medical career? Join our ALS certification course today and gain the skills needed to succeed in critical care. For inquiries, contact us directly!
-      </p>
-      <div class="mt-9 flex flex-wrap justify-center gap-3">
-        <a href="https://wa.me/917483524565" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-full sm:w-auto">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 20zm4.4-5.9c-.2-.1-1.4-.7-1.7-.8s-.4-.1-.5.1-.6.8-.7 1-.3.2-.5.1a6.5 6.5 0 01-1.9-1.2 7.3 7.3 0 01-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.4a.9.9 0 00-.6.3 2.6 2.6 0 00-.8 1.9A4.5 4.5 0 009 12a10.2 10.2 0 003.9 3.4 9.6 9.6 0 001.3.5 3.1 3.1 0 001.4.1 2.4 2.4 0 001.5-1.1 1.9 1.9 0 00.1-1.1c0-.1-.2-.2-.4-.3z"/></svg>
-          Send us a WhatsApp
-        </a>
-        <a href="mailto:info@goocampus.in" class="btn w-full border-2 border-white/25 text-white hover:border-white/50 sm:w-auto">Send us an email</a>
+<section class="py-20 lg:py-28">
+  <div class="shell">
+    <h2 data-reveal class="t-h2 max-w-[20ch]">We have a fair &amp; transparent refund policy</h2>
+    <div data-reveal class="mt-11 grid gap-6 md:grid-cols-3">
+      <div class="card p-8">
+        <p class="text-[15px] font-bold text-brand">45 days or more before</p>
+        <p class="copy mt-3">Cancel 45 days or more before the course: <strong class="font-bold text-ink">100% refund</strong>.</p>
       </div>
-      <p class="mt-8 text-[14px] text-white/60">Have questions about this course? Don&rsquo;t hesitate to reach out.</p>
+      <div class="card p-8">
+        <p class="text-[15px] font-bold text-brand">Between 45 and 14 days</p>
+        <p class="copy mt-3">Cancel between 45 and 14 days before the course: <strong class="font-bold text-ink">50% refund</strong> if your seat is not resold; <strong class="font-bold text-ink">90% refund</strong> if your seat is resold.</p>
+      </div>
+      <div class="card p-8">
+        <p class="text-[15px] font-bold text-brand">Within 14 days</p>
+        <p class="copy mt-3">Cancel within 14 days of the course: <strong class="font-bold text-ink">no refund</strong>, unless your seat is resold, in which case you get a <strong class="font-bold text-ink">90% refund</strong>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="pb-24 lg:pb-32">
+  <div class="shell">
+    <div data-reveal class="relative overflow-hidden rounded-card bg-ink px-8 py-16 text-center text-white lg:px-16 lg:py-20">
+      <div class="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-brand/25 blur-3xl" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -bottom-28 -right-20 h-72 w-72 rounded-full bg-brand/20 blur-3xl" aria-hidden="true"></div>
+      <div class="relative">
+        <h2 class="mx-auto max-w-[16ch] !text-white t-h2">Add ALS to your portfolio. Enroll today!</h2>
+        <p class="mx-auto mt-6 max-w-[56ch] text-[16px] leading-relaxed text-white/70">
+          Ready to elevate your medical career? Join our ALS certification course today and gain the skills needed to succeed in critical care. For inquiries, contact us directly!
+        </p>
+        <div class="mt-9 flex flex-wrap justify-center gap-3">
+          <a href="https://wa.me/917483524565" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 20zm4.4-5.9c-.2-.1-1.4-.7-1.7-.8s-.4-.1-.5.1-.6.8-.7 1-.3.2-.5.1a6.5 6.5 0 01-1.9-1.2 7.3 7.3 0 01-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.4a.9.9 0 00-.6.3 2.6 2.6 0 00-.8 1.9A4.5 4.5 0 009 12a10.2 10.2 0 003.9 3.4 9.6 9.6 0 001.3.5 3.1 3.1 0 001.4.1 2.4 2.4 0 001.5-1.1 1.9 1.9 0 00.1-1.1c0-.1-.2-.2-.4-.3z"/></svg>
+            Send us a WhatsApp
+          </a>
+          <a href="mailto:info@goocampus.in" class="btn btn-ghost">Send us an email
+            <span class="nub"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+          </a>
+        </div>
+        <p class="mt-8 text-[14px] text-white/60">Have questions about this course? Don&rsquo;t hesitate to reach out.</p>
+      </div>
     </div>
   </div>
 </section>
 
 </main>
 
-<footer class="border-t border-line bg-white py-12">
-  <div class="container">
+<footer class="rule bg-white py-12">
+  <div class="shell">
     <div class="grid gap-8 sm:grid-cols-2 sm:items-center">
       <div>
-        <p class="display text-[18px] text-ink">ALS Course <span class="text-red">India</span></p>
+        <p class="text-[18px] font-bold text-ink">ALS Course <span class="text-brand">India</span></p>
         <address class="not-italic">
           <p class="copy mt-3">Bangalore, India</p>
-          <p class="copy mt-1">Phone: <a href="tel:+917483524565" class="inline-flex min-h-[44px] items-center font-semibold text-ink hover:text-red">+91 74835 24565</a></p>
+          <p class="copy mt-1">Phone: <a href="tel:+917483524565" class="inline-flex min-h-[44px] items-center font-bold text-ink hover:text-brand">+91 74835 24565</a></p>
         </address>
       </div>
-      <nav class="flex flex-wrap gap-x-8 gap-y-3 sm:justify-end" aria-label="Footer">
-        <a href="#why" class="inline-flex min-h-[44px] items-center text-[15px] text-body transition hover:text-ink">Why This Course</a>
-        <a href="#curriculum" class="inline-flex min-h-[44px] items-center text-[15px] text-body transition hover:text-ink">Curriculum</a>
-        <a href="#team" class="inline-flex min-h-[44px] items-center text-[15px] text-body transition hover:text-ink">Instructors</a>
-        <a href="#pricing" class="inline-flex min-h-[44px] items-center text-[15px] text-body transition hover:text-ink">Pricing</a>
+      <nav class="flex flex-wrap gap-x-8 gap-y-1 sm:justify-end" aria-label="Footer">
+        <a href="#why" class="inline-flex min-h-[44px] items-center text-[15px] text-body transition hover:text-brand">Why This Course</a>
+        <a href="#curriculum" class="inline-flex min-h-[44px] items-center text-[15px] text-body transition hover:text-brand">Curriculum</a>
+        <a href="#team" class="inline-flex min-h-[44px] items-center text-[15px] text-body transition hover:text-brand">Our Team</a>
+        <a href="#pricing" class="inline-flex min-h-[44px] items-center text-[15px] text-body transition hover:text-brand">Pricing</a>
       </nav>
     </div>
     <div class="rule mt-10 pt-6">
-      <p class="text-[14px] text-body">© 2026 GooCampus. ERC-accredited Advanced Life Support training in India.</p>
+      <p class="text-[14px] text-body">&copy; 2026 GooCampus. ERC-accredited Advanced Life Support training in India.</p>
     </div>
   </div>
 </footer>
 
 <script>
+  // Mobile menu
   const t = document.getElementById('navToggle'), m = document.getElementById('mobileMenu');
   t && t.addEventListener('click', () => {
-    const open = m.classList.toggle('hidden') === false;
+    const open = !m.classList.toggle('hidden');
     t.setAttribute('aria-expanded', String(open));
   });
   m && m.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
     m.classList.add('hidden'); t.setAttribute('aria-expanded', 'false');
   }));
 
-  // Below-fold reveals via IntersectionObserver. [data-reveal] carries no hidden
-  // resting state, so a blocked script can never strand content invisible.
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Core-team carousel. Slides stay in the DOM in source order; only which one
+  // is "active" changes, and the track is nudged so the active slide centres.
+  (() => {
+    const track = document.getElementById('teamTrack');
+    if (!track) return;
+    const slides = [...track.querySelectorAll('.team-slide')];
+    const dotsWrap = document.getElementById('teamDots');
+    const prev = document.getElementById('teamPrev'), next = document.getElementById('teamNext');
+    let i = slides.findIndex(s => s.dataset.active === 'true');
+    if (i < 0) i = 0;
+
+    const dots = slides.map((s, n) => {
+      const b = document.createElement('button');
+      b.className = 'team-dot';
+      b.type = 'button';
+      b.appendChild(document.createElement('i'));
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-label', (s.querySelector('figcaption div:last-child') || {}).textContent || ('Slide ' + (n + 1)));
+      b.addEventListener('click', () => go(n));
+      dotsWrap.appendChild(b);
+      return b;
+    });
+
+    function go(n) {
+      const len = slides.length;
+      i = (n + len) % len;
+      slides.forEach((s, k) => {
+        s.dataset.active = String(k === i);
+        // Reorder so the active slide is always the centre child and the others
+        // flank it. Translating the track instead would shove the group
+        // off-centre whenever all slides already fit the viewport.
+        let rel = k - i;
+        if (rel >  len / 2) rel -= len;
+        if (rel < -len / 2) rel += len;
+        s.style.order = rel;
+      });
+      dots.forEach((d, k) => d.setAttribute('aria-selected', String(k === i)));
+    }
+
+    prev.addEventListener('click', () => go(i - 1));
+    next.addEventListener('click', () => go(i + 1));
+    track.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') go(i - 1);
+      if (e.key === 'ArrowRight') go(i + 1);
+    });
+    addEventListener('resize', () => go(i));
+    go(i);
+
+    // Auto-advance, paused on hover and when the tab is hidden.
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      let timer = setInterval(() => go(i + 1), 4500);
+      const stop = () => { clearInterval(timer); timer = null; };
+      const start = () => { if (!timer) timer = setInterval(() => go(i + 1), 4500); };
+      track.parentElement.parentElement.addEventListener('mouseenter', stop);
+      track.parentElement.parentElement.addEventListener('mouseleave', start);
+      document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+    }
+  })();
+
+  // Below-fold reveals. [data-reveal] carries no hidden resting state, so a
+  // blocked script can never strand content invisible.
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const targets = [...document.querySelectorAll('[data-reveal]')];
   if (!reduce && targets.length && 'IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries, obs) => {
