@@ -209,18 +209,20 @@ tailwind.config = {
 <style>
   html { scroll-behavior:smooth; }
   body { font-family:'Montserrat',system-ui,sans-serif; color:#4B5563; background:#fff; -webkit-font-smoothing:antialiased; }
-  .shell { max-width:1240px; margin-inline:auto; padding-inline:24px; }
+  .shell { max-width:1320px; margin-inline:auto; padding-inline:24px; }
 
   /* !important is required: the Tailwind CDN injects its preflight
      (h1-h6 { font-weight: inherit }) after this inline <style>, so at equal
      specificity it wins and every heading renders at 400. */
   h1,h2,h3 { color:#233A74; font-weight:700 !important; letter-spacing:-.01em; }
   .text-brandHi, .text-flame { font-weight:800 !important; }
-  .t-h1 { font-size:clamp(2.25rem,1.3rem + 3.6vw,3.4rem); line-height:1.1; }
-  .t-h2 { font-size:clamp(1.75rem,1.15rem + 2.2vw,2.6rem); line-height:1.15; }
-  .t-h3 { font-size:1.125rem; line-height:1.35; }
-  .copy { color:#4B5563; font-size:1rem; line-height:1.7; }
-  .lead { color:#4B5563; font-size:1.0625rem; line-height:1.75; }
+  .t-h1 { font-size:clamp(2.25rem,1.25rem + 4vw,3.25rem); line-height:1.12; }
+  .t-h2 { font-size:clamp(1.75rem,1.1rem + 2.9vw,2.875rem); line-height:1.2; }
+  /* !important to beat the h1-h3 700 rule above, which itself needs !important
+     to beat Tailwind's preflight. Reference card titles are 600, not 700. */
+  .t-h3 { font-size:1.125rem; font-weight:600 !important; line-height:1.5; }
+  .copy { color:#4B5563; font-size:1.125rem; font-weight:500; line-height:1.6; }
+  .lead { color:#4B5563; font-size:1.125rem; font-weight:500; line-height:1.6; }
 
   /* Pill button with the reference's circular arrow badge. */
   .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
@@ -232,7 +234,7 @@ tailwind.config = {
   .btn-ghost:hover { background:#233A74; color:#fff; }
   .btn:focus-visible { outline:2px solid #E60000; outline-offset:3px; }
 
-  .card { background:#fff; border-radius:30px; box-shadow:0 18px 50px -32px rgba(35,58,116,.35); }
+  .card { background:#fff; border-radius:20px; box-shadow:0 1px 8px rgba(35,58,116,.10); }
   .chip { display:inline-flex; align-items:center; gap:.55rem; border-radius:50px;
           background:#fff; padding:.65rem 1.05rem; font-size:.8125rem; font-weight:600; color:#233A74;
           box-shadow:0 14px 36px -18px rgba(35,58,116,.45); }
@@ -247,6 +249,12 @@ tailwind.config = {
                 white-space:nowrap; user-select:none; }
 
   .rule { border-top:1px solid #E4E9F2; }
+
+  /* Section header: the reference centres these in a 700px column and lets the
+     grid below run the full shell. That contrast between a narrow, centred
+     intro and wide content is what gives it its rhythm. */
+  .sec-head { max-width:700px; margin-inline:auto; text-align:center; }
+  .sec-head .copy { margin-top:1.15rem; }
 
   /* Marquee: duplicated track + translateX(-50%) loops seamlessly. */
   /* Fade the ends so the loop reads as continuous rather than hard-clipped. */
@@ -413,27 +421,29 @@ tailwind.config = {
   </div>
 </section>
 
-<section id="why" class="py-20 lg:py-28">
+<section id="why" class="py-16 lg:py-[100px]">
   <div class="shell">
-    <h2 data-reveal class="t-h2 max-w-[20ch]">India&rsquo;s 1st ALS course recognized in the <span class="text-brandHi">UK</span> and <span class="text-brandHi">Australia</span></h2>
-    <p data-reveal class="copy mt-4 max-w-[58ch]">It&rsquo;s not just a course, it&rsquo;s your gateway to better opportunities.</p>
+    <div data-reveal class="sec-head">
+      <h2 class="t-h2">India&rsquo;s 1st ALS course recognized in the <span class="text-brandHi">UK</span> and <span class="text-brandHi">Australia</span></h2>
+      <p class="copy">It&rsquo;s not just a course, it&rsquo;s your gateway to better opportunities.</p>
+    </div>
 
-    <div data-reveal class="mt-12 grid gap-6 md:grid-cols-3">
-      <article class="card p-8">
+    <div data-reveal class="mt-[50px] grid gap-[30px] md:grid-cols-3">
+      <article class="card p-[30px]">
         <span class="grid h-12 w-12 place-items-center rounded-soft bg-brandSoft text-brand">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.2 13.8L7 22l5-3 5 3-1.2-8.2"/></svg>
         </span>
         <h3 class="t-h3 mt-6">ERC Accredited Certificate</h3>
         <p class="copy mt-3">Get certified with an ERC-accredited ALS course, recognized by healthcare systems in the UK and Australia. Valid for up to 3 years, this certification opens doors to international medical practice.</p>
       </article>
-      <article class="card p-8">
+      <article class="card p-[30px]">
         <span class="grid h-12 w-12 place-items-center rounded-soft bg-brandSoft text-brand">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13A4 4 0 0119 7"/></svg>
         </span>
         <h3 class="t-h3 mt-6">Qualified Instructors</h3>
         <p class="copy mt-3">Learn from ERC-certified instructors who bring real-world experience to each session, ensuring you master essential ALS skills with confidence.</p>
       </article>
-      <article class="card p-8">
+      <article class="card p-[30px]">
         <span class="grid h-12 w-12 place-items-center rounded-soft bg-brandSoft text-brand">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
         </span>
@@ -444,20 +454,20 @@ tailwind.config = {
   </div>
 </section>
 
-<section class="bg-paper py-20 lg:py-28">
+<section class="bg-paper py-16 lg:py-[100px]">
   <div class="shell">
-    <h2 data-reveal class="t-h2 max-w-[22ch]">Complete and comprehensive <span class="text-brandHi">ALS training experience</span></h2>
+    <div data-reveal class="sec-head"><h2 class="t-h2">Complete and comprehensive <span class="text-brandHi">ALS training experience</span></h2></div>
 
-    <div data-reveal class="mt-12 grid gap-6 md:grid-cols-3">
-      <article class="card p-8">
+    <div data-reveal class="mt-[50px] grid gap-[30px] md:grid-cols-3">
+      <article class="card p-[30px]">
         <h3 class="t-h3">Realistic Simulation-Based Learning</h3>
         <p class="copy mt-3">Engage in high-fidelity simulations that replicate emergency situations, training you to respond with confidence and precision.</p>
       </article>
-      <article class="card p-8">
+      <article class="card p-[30px]">
         <h3 class="t-h3">Instant Feedback &amp; Expert Coaching</h3>
         <p class="copy mt-3">Benefit from instant feedback and hands-on coaching by certified instructors, ensuring rapid skill improvement and mastery.</p>
       </article>
-      <article class="card p-8">
+      <article class="card p-[30px]">
         <h3 class="t-h3">Certification with Global Recognition</h3>
         <p class="copy mt-3">Earn an ALS certificate that is respected worldwide, opening doors to opportunities in the UK, Australia, and more.</p>
       </article>
@@ -465,11 +475,11 @@ tailwind.config = {
   </div>
 </section>
 
-<section id="curriculum" class="py-20 lg:py-28">
+<section id="curriculum" class="py-16 lg:py-[100px]">
   <div class="shell">
-    <h2 data-reveal class="t-h2 max-w-[24ch]">Comprehensive, globally recognized ALS training with <span class="text-brandHi">hands-on expertise</span></h2>
+    <div data-reveal class="sec-head"><h2 class="t-h2">Comprehensive, globally recognized ALS training with <span class="text-brandHi">hands-on expertise</span></h2></div>
 
-    <div data-reveal class="mt-14 space-y-16 lg:space-y-24">
+    <div data-reveal class="mt-[50px] space-y-16 lg:space-y-24">
 
       <article class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div>
@@ -523,7 +533,7 @@ tailwind.config = {
   </div>
 </section>
 
-<section class="bg-paper py-20 lg:py-28">
+<section class="bg-paper py-16 lg:py-[100px]">
   <div class="shell">
     <figure data-reveal class="card mx-auto max-w-[74ch] px-8 py-12 text-center lg:px-14">
       <span class="mx-auto grid h-12 w-12 place-items-center rounded-full bg-brandSoft text-brand">
@@ -540,7 +550,7 @@ tailwind.config = {
   </div>
 </section>
 
-<section id="team" class="py-20 lg:py-28">
+<section id="team" class="py-16 lg:py-[100px]">
   <div class="shell">
     <h2 data-reveal class="t-h2 text-center">The Core Team. <span class="text-brandHi">People who make it happen.</span></h2>
 
@@ -548,7 +558,7 @@ tailwind.config = {
          markup order matches the source site's rotation. -->
     <div data-reveal class="relative mt-14">
       <div class="overflow-hidden">
-        <div id="teamTrack" class="flex items-center justify-center gap-5 lg:gap-8">
+        <div id="teamTrack" class="flex items-center justify-center gap-[30px] lg:gap-8">
 
           <figure class="team-slide w-[230px] lg:w-[320px]" data-active="false">
             <img src="assets/team/martin-pearce.jpg" width="760" height="760" loading="lazy" decoding="async"
@@ -584,7 +594,7 @@ tailwind.config = {
     </div>
 
     <h3 data-reveal class="mt-20 text-center text-[1.5rem]">Meet Our Instructors</h3>
-    <div data-reveal class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div data-reveal class="mt-10 grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
       <figure class="card p-5 text-center">
         <img src="assets/team/david-obrien.jpg" width="560" height="560" loading="lazy" decoding="async"
              alt="Dr David O'Brien, ALS Instructor" class="mx-auto aspect-square w-full max-w-[210px] rounded-soft object-cover" />
@@ -619,11 +629,11 @@ tailwind.config = {
   </div>
 </section>
 
-<section id="pricing" class="bg-paper py-20 lg:py-28">
+<section id="pricing" class="bg-paper py-16 lg:py-[100px]">
   <div class="shell">
-    <h2 data-reveal class="t-h2 max-w-[22ch]">Gain essential skills with our <span class="text-brandHi">ERC-accredited</span> ALS training</h2>
+    <div data-reveal class="sec-head"><h2 class="t-h2">Gain essential skills with our <span class="text-brandHi">ERC-accredited</span> ALS training</h2></div>
 
-    <div data-reveal class="mt-12 grid gap-8 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
+    <div data-reveal class="mt-[50px] grid gap-8 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
       <div class="relative overflow-hidden rounded-card bg-ink p-9 text-white lg:p-11">
         <div class="pointer-events-none absolute -right-16 -top-16 h-52 w-52 rounded-full bg-brand/30 blur-2xl" aria-hidden="true"></div>
         <div class="relative">
@@ -651,12 +661,12 @@ tailwind.config = {
   </div>
 </section>
 
-<section class="py-20 lg:py-28">
+<section class="py-16 lg:py-[100px]">
   <div class="shell">
-    <h2 data-reveal class="t-h2 max-w-[18ch]">Trusted by <span class="text-brandHi">hundreds of doctors</span></h2>
+    <div data-reveal class="sec-head"><h2 class="t-h2">Trusted by <span class="text-brandHi">hundreds of doctors</span></h2></div>
 
-    <div data-reveal class="mt-12 grid gap-6 md:grid-cols-3">
-      <figure class="card p-8">
+    <div data-reveal class="mt-[50px] grid gap-[30px] md:grid-cols-3">
+      <figure class="card p-[30px]">
         <div class="flex gap-1 text-brand" aria-label="Rated 5 out of 5">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
@@ -667,7 +677,7 @@ tailwind.config = {
         <blockquote class="mt-4 text-[15px] leading-relaxed text-ink">&ldquo;An informative and exceptionally well-organized ALS course. The curriculum was comprehensive, and each session built perfectly on the last, making complex concepts easy to grasp. I feel more confident.&rdquo;</blockquote>
         <figcaption class="mt-6"><div class="text-[14px] font-bold text-ink">Dr. Jeevan</div><div class="text-[13px] text-body">Batch: March 2024</div></figcaption>
       </figure>
-      <figure class="card p-8">
+      <figure class="card p-[30px]">
         <div class="flex gap-1 text-brand" aria-label="Rated 5 out of 5">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
@@ -678,7 +688,7 @@ tailwind.config = {
         <blockquote class="mt-4 text-[15px] leading-relaxed text-ink">&ldquo;I learned essential ALS protocols tailored for hospital-based systems, which is exactly what I needed for my role. The course is a fantastic blend of theory and practice, making me feel prepared for real-world medical challenges.&rdquo;</blockquote>
         <figcaption class="mt-6"><div class="text-[14px] font-bold text-ink">Dr. Krishaa N</div><div class="text-[13px] text-body">Batch: January 2024</div></figcaption>
       </figure>
-      <figure class="card p-8">
+      <figure class="card p-[30px]">
         <div class="flex gap-1 text-brand" aria-label="Rated 5 out of 5">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
@@ -693,35 +703,35 @@ tailwind.config = {
   </div>
 </section>
 
-<section id="faq" class="bg-paper py-20 lg:py-28">
+<section id="faq" class="bg-paper py-16 lg:py-[100px]">
   <div class="shell">
-    <div class="grid gap-12 lg:grid-cols-[1fr_1.5fr] lg:gap-20">
-      <div class="lg:sticky lg:top-[104px] lg:self-start">
-        <h2 data-reveal class="t-h2">Have a question? <span class="text-brandHi">We&rsquo;re here to answer.</span></h2>
-      </div>
-      <div data-reveal class="card divide-y divide-line px-7 lg:px-9">
+    <div data-reveal class="sec-head">
+      <h2 class="t-h2">Have a question? <span class="text-brandHi">We&rsquo;re here to answer.</span></h2>
+    </div>
+    <div class="mt-[50px]">
+      <div data-reveal class="card mx-auto max-w-[900px] divide-y divide-line px-7 lg:px-10">
         <details class="acc py-5" open>
-          <summary class="flex cursor-pointer list-none items-center justify-between gap-6"><span class="text-[16px] font-semibold text-ink">What is an ALS certification, and why is it important for my medical career?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-[30px]"><span class="text-[16px] font-semibold text-ink">What is an ALS certification, and why is it important for my medical career?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <p class="copy mt-3 max-w-[66ch]">ALS (Advanced Life Support) certification equips you with the essential skills to respond to cardiac and other critical emergencies. This certification is highly valued in healthcare systems globally, especially in the UK and Australia, and is often a requirement or preferred qualification for roles in emergency and critical care.</p>
         </details>
         <details class="acc py-5">
-          <summary class="flex cursor-pointer list-none items-center justify-between gap-6"><span class="text-[16px] font-semibold text-ink">Is this ALS course recognized internationally?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-[30px]"><span class="text-[16px] font-semibold text-ink">Is this ALS course recognized internationally?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <p class="copy mt-3 max-w-[66ch]">Yes. This is an ERC-accredited course &mdash; India&rsquo;s first ALS course recognised in the UK and Australia. The certificate is valid for up to 3 years and is respected by healthcare systems internationally.</p>
         </details>
         <details class="acc py-5">
-          <summary class="flex cursor-pointer list-none items-center justify-between gap-6"><span class="text-[16px] font-semibold text-ink">What kind of practical skills will I learn in this course?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-[30px]"><span class="text-[16px] font-semibold text-ink">What kind of practical skills will I learn in this course?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <p class="copy mt-3 max-w-[66ch]">You will train in the ABCDE approach to cardiac arrest, CPR, airway management, recognising patients at risk of deterioration, and the non-technical skills needed to lead and collaborate with a resuscitation team under pressure &mdash; all through high-fidelity simulation.</p>
         </details>
         <details class="acc py-5">
-          <summary class="flex cursor-pointer list-none items-center justify-between gap-6"><span class="text-[16px] font-semibold text-ink">Who can take this ALS course, and are there any prerequisites?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-[30px]"><span class="text-[16px] font-semibold text-ink">Who can take this ALS course, and are there any prerequisites?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <p class="copy mt-3 max-w-[66ch]">The course is designed for doctors and healthcare professionals, including those preparing for PLAB-2 and international medical practice. Contact us to confirm eligibility for your specific role and stage.</p>
         </details>
         <details class="acc py-5">
-          <summary class="flex cursor-pointer list-none items-center justify-between gap-6"><span class="text-[16px] font-semibold text-ink">How is this course structured, and what can I expect during the training?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-[30px]"><span class="text-[16px] font-semibold text-ink">How is this course structured, and what can I expect during the training?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <p class="copy mt-3 max-w-[66ch]">It is a comprehensive 2-day course combining ERC-accredited curriculum content with realistic simulation-based learning, instant feedback and expert coaching, continuous assessment in airway management and emergency response, plus MCQ exams and CASTests.</p>
         </details>
         <details class="acc py-5">
-          <summary class="flex cursor-pointer list-none items-center justify-between gap-6"><span class="text-[16px] font-semibold text-ink">What resources or materials will I receive as part of the ALS course?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-[30px]"><span class="text-[16px] font-semibold text-ink">What resources or materials will I receive as part of the ALS course?</span><svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <p class="copy mt-3 max-w-[66ch]">You receive access to essential ALS study materials alongside hands-on training with real-life simulations, delivered by ERC-certified instructors.</p>
         </details>
       </div>
@@ -729,19 +739,19 @@ tailwind.config = {
   </div>
 </section>
 
-<section class="py-20 lg:py-28">
+<section class="py-16 lg:py-[100px]">
   <div class="shell">
-    <h2 data-reveal class="t-h2 max-w-[20ch]">We have a <span class="text-brandHi">fair &amp; transparent</span> refund policy</h2>
-    <div data-reveal class="mt-11 grid gap-6 md:grid-cols-3">
-      <div class="card p-8">
+    <div data-reveal class="sec-head"><h2 class="t-h2">We have a <span class="text-brandHi">fair &amp; transparent</span> refund policy</h2></div>
+    <div data-reveal class="mt-[50px] grid gap-[30px] md:grid-cols-3">
+      <div class="card p-[30px]">
         <p class="text-[15px] font-bold text-brand">45 days or more before</p>
         <p class="copy mt-3">Cancel 45 days or more before the course: <strong class="font-bold text-ink">100% refund</strong>.</p>
       </div>
-      <div class="card p-8">
+      <div class="card p-[30px]">
         <p class="text-[15px] font-bold text-brand">Between 45 and 14 days</p>
         <p class="copy mt-3">Cancel between 45 and 14 days before the course: <strong class="font-bold text-ink">50% refund</strong> if your seat is not resold; <strong class="font-bold text-ink">90% refund</strong> if your seat is resold.</p>
       </div>
-      <div class="card p-8">
+      <div class="card p-[30px]">
         <p class="text-[15px] font-bold text-brand">Within 14 days</p>
         <p class="copy mt-3">Cancel within 14 days of the course: <strong class="font-bold text-ink">no refund</strong>, unless your seat is resold, in which case you get a <strong class="font-bold text-ink">90% refund</strong>.</p>
       </div>
