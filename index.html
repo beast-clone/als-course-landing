@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>ALS Course in India | ERC-Accredited Advanced Life Support Training</title>
-<meta name="description" content="India's first ERC-accredited Advanced Life Support (ALS) course, recognised in the UK and Australia. 2-day hands-on training in Bangalore with ERC-certified instructors. Certificate valid 3 years." />
+<meta name="description" content="India's first ERC-accredited Advanced Life Support (ALS) course, recognised in the UK and Australia. 2-day hands-on training with ERC-certified instructors. Certificate valid 3 years." />
 <!-- SITE ORIGIN — single place to change on deployment.
      Every canonical / og:url / og:image / JSON-LD @id below uses this origin.
      When this page moves to its final domain, find-and-replace
@@ -40,7 +40,7 @@
 <link rel="apple-touch-icon" href="assets/favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <!-- Structured data: Course + Organisation + LocalBusiness + FAQ, so this page is
      eligible for course, local and FAQ rich results and is legible to AI answer engines. -->
@@ -74,7 +74,6 @@
         "instructor": [
           { "@type": "Person", "name": "Matthew Donnelly", "jobTitle": "Course Director" },
           { "@type": "Person", "name": "Martin Pearce", "jobTitle": "Course Director" },
-          { "@type": "Person", "name": "Jeswin Jacob", "jobTitle": "Course Organizer" },
           { "@type": "Person", "name": "Dr David O'Brien", "jobTitle": "ALS Instructor" },
           { "@type": "Person", "name": "Dr Hesham Turki", "jobTitle": "ALS Instructor" },
           { "@type": "Person", "name": "Edward Chapman", "jobTitle": "ALS Instructor" },
@@ -84,11 +83,9 @@
         ],
         "location": {
           "@type": "Place",
-          "name": "Bangalore, India",
+          "name": "India",
           "address": {
             "@type": "PostalAddress",
-            "addressLocality": "Bangalore",
-            "addressRegion": "Karnataka",
             "addressCountry": "IN"
           }
         }
@@ -214,7 +211,11 @@ tailwind.config = {
   body { font-family:'Montserrat',system-ui,sans-serif; color:#4B5563; background:#fff; -webkit-font-smoothing:antialiased; }
   .shell { max-width:1240px; margin-inline:auto; padding-inline:24px; }
 
-  h1,h2,h3 { color:#233A74; font-weight:700; letter-spacing:-.01em; }
+  /* !important is required: the Tailwind CDN injects its preflight
+     (h1-h6 { font-weight: inherit }) after this inline <style>, so at equal
+     specificity it wins and every heading renders at 400. */
+  h1,h2,h3 { color:#233A74; font-weight:700 !important; letter-spacing:-.01em; }
+  .text-brandHi, .text-flame { font-weight:800 !important; }
   .t-h1 { font-size:clamp(2.25rem,1.3rem + 3.6vw,3.4rem); line-height:1.1; }
   .t-h2 { font-size:clamp(1.75rem,1.15rem + 2.2vw,2.6rem); line-height:1.15; }
   .t-h3 { font-size:1.125rem; line-height:1.35; }
@@ -370,7 +371,6 @@ tailwind.config = {
 
         <dl class="rise-in mt-10 flex flex-wrap gap-x-9 gap-y-4" style="animation-delay:.27s">
           <div><dt class="text-[13px] font-medium text-body">Accreditation</dt><dd class="text-[15px] font-bold text-ink">European Resuscitation Council</dd></div>
-          <div><dt class="text-[13px] font-medium text-body">Location</dt><dd class="text-[15px] font-bold text-ink">Bangalore, India</dd></div>
           <div><dt class="text-[13px] font-medium text-body">Duration</dt><dd class="text-[15px] font-bold text-ink">2 days</dd></div>
         </dl>
       </div>
@@ -580,14 +580,6 @@ tailwind.config = {
             </figcaption>
           </figure>
 
-          <figure class="team-slide w-[230px] lg:w-[320px]" data-active="false">
-            <img src="assets/team/jeswin-jacob.jpg" width="760" height="760" loading="lazy" decoding="async"
-                 alt="Jeswin Jacob, Course Organizer" class="w-full rounded-card object-cover" />
-            <figcaption class="mt-5 text-center">
-              <div class="text-[13px] font-semibold uppercase tracking-[.08em] text-brand">Course Organizer</div>
-              <div class="mt-1 text-[19px] font-bold text-ink">Jeswin Jacob</div>
-            </figcaption>
-          </figure>
 
         </div>
       </div>
