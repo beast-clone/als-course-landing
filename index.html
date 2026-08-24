@@ -257,6 +257,27 @@ tailwind.config = {
   .ghost-word.a { top:3%;  left:0; }
   .ghost-word.b { top:25%; right:0; }
 
+  /* Status pill above the headline, per the reference: 99px radius, grey fill,
+     14px/500 at 1.68px tracking, with an 8px dot. */
+  .badge { display:inline-flex; align-items:center; gap:.6rem; border-radius:99px;
+           background:#E5E5E5; padding:.55rem 1rem; font-size:.875rem; font-weight:500;
+           letter-spacing:1.68px; color:#0A0A0A; }
+  .badge-dot { width:8px; height:8px; border-radius:50%; background:#00B92D; flex:none; }
+
+  /* Headline shimmer. A copy of the heading is stacked over the original with
+     transparent text and a gradient clipped to the glyphs; moving the
+     background position sweeps the accent across the words. */
+  .shimmer { position:absolute; inset:0; color:transparent; pointer-events:none;
+             background-image:linear-gradient(135deg,
+               rgba(0,0,0,0) 0%, rgba(0,0,0,0) 35.6%, #E60000 50%,
+               rgba(0,0,0,0) 64.4%, rgba(0,0,0,0) 100%);
+             background-size:200% 200%; background-repeat:no-repeat;
+             -webkit-background-clip:text; background-clip:text;
+             animation:shimmer 6s linear infinite; }
+  @keyframes shimmer {
+    from { background-position:200% center; }
+    to   { background-position:-100% center; }
+  }
   .rule { border-top:1px solid #E4E9F2; }
 
   /* Section header: the reference centres these in a 700px column and lets the
@@ -312,6 +333,8 @@ tailwind.config = {
     .rise-in { animation:none !important; }
     .marquee-track { animation:none !important; }
     .team-slide { transition:none !important; }
+    .shimmer { animation:none !important; }
+    .shimmer { animation:none !important; }
   }
 </style>
 </head>
@@ -370,9 +393,15 @@ tailwind.config = {
   <div class="shell relative">
     <div class="grid items-center gap-12 lg:grid-cols-[1.02fr_.98fr] lg:gap-10">
       <div>
-        <h1 class="rise-in t-h1" style="animation-delay:.05s">
-          ERC-Accredited <span class="text-brandHi">Advanced Life Support</span> Courses in India
-        </h1>
+        <div class="rise-in" style="animation-delay:.05s">
+          <span class="badge">
+            <i class="badge-dot" aria-hidden="true"></i>Recognised In The UK And Australia
+          </span>
+        </div>
+        <div class="rise-in relative mt-6" style="animation-delay:.1s">
+          <h1 class="t-h1">ERC-Accredited Advanced Life Support Courses in India</h1>
+          <span class="t-h1 shimmer" aria-hidden="true">ERC-Accredited Advanced Life Support Courses in India</span>
+        </div>
         <p class="rise-in lead mt-5 max-w-[52ch]" style="animation-delay:.12s">
           Enroll in our comprehensive 2-day Advanced Life Support (ALS) courses in India and gain the skills necessary to provide critical life support in emergencies.
         </p>
