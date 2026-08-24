@@ -183,9 +183,11 @@ tailwind.config = {
   theme: {
     extend: {
       colors: {
-        brand:   '#0145F0',
-        brandDeep:'#0134B8',
-        brandSoft:'#E8EEFE',
+        brand:   '#E60000',
+        brandHi: '#FF0000',
+        flame:   '#D43F00',
+        brandDeep:'#B30000',
+        brandSoft:'#FFECEC',
         ink:     '#011139',
         body:    '#4B5563',
         paper:   '#F5F7FC',
@@ -215,14 +217,14 @@ tailwind.config = {
          padding:.8rem 1rem .8rem 1.45rem; font-size:.9375rem; font-weight:600;
          transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease; }
   .btn:hover { transform:translateY(-2px); }
-  .btn-primary { background:#0145F0; color:#fff; box-shadow:0 12px 28px -12px rgba(1,69,240,.65); }
-  .btn-primary:hover { background:#0134B8; }
+  .btn-primary { background:#E60000; color:#fff; box-shadow:0 12px 28px -12px rgba(230,0,0,.55); }
+  .btn-primary:hover { background:#B30000; }
   .btn-ghost { background:#fff; color:#011139; box-shadow:0 10px 26px -14px rgba(1,17,57,.45); }
   .btn-ghost:hover { background:#F5F7FC; }
   .btn .nub { display:grid; place-items:center; width:29px; height:29px; border-radius:50%;
               background:rgba(255,255,255,.22); flex:none; }
-  .btn-ghost .nub { background:#0145F0; color:#fff; }
-  .btn:focus-visible { outline:2px solid #0145F0; outline-offset:3px; }
+  .btn-ghost .nub { background:#E60000; color:#fff; }
+  .btn:focus-visible { outline:2px solid #E60000; outline-offset:3px; }
 
   .card { background:#fff; border-radius:30px; box-shadow:0 18px 50px -32px rgba(1,17,57,.35); }
   .chip { display:inline-flex; align-items:center; gap:.55rem; border-radius:50px;
@@ -231,8 +233,8 @@ tailwind.config = {
 
   /* Hero wash — the reference's soft blue gradient field. */
   .hero-wash { background:
-      radial-gradient(1100px 620px at 78% 18%, rgba(1,69,240,.13), transparent 62%),
-      radial-gradient(820px 520px at 8% 84%, rgba(1,69,240,.10), transparent 60%),
+      radial-gradient(1100px 620px at 78% 18%, rgba(230,0,0,.10), transparent 62%),
+      radial-gradient(820px 520px at 8% 84%, rgba(230,0,0,.08), transparent 60%),
       linear-gradient(180deg,#F7F9FE 0%,#EDF1FD 48%,#FFFFFF 100%); }
   .ghost-word { font-weight:700; letter-spacing:-.035em; line-height:.8;
                 font-size:clamp(4.5rem,15vw,13rem); color:#011139; opacity:.05;
@@ -254,9 +256,9 @@ tailwind.config = {
   .acc > summary { padding-block:.7rem; }
   .acc > summary::-webkit-details-marker { display:none; }
   .acc-chevron { flex:none; color:#8A93A6; transition:transform .25s ease, color .25s ease; }
-  .acc[open] > summary .acc-chevron { transform:rotate(180deg); color:#0145F0; }
-  .acc > summary:hover .acc-chevron { color:#0145F0; }
-  .acc > summary:focus-visible { outline:2px solid #0145F0; outline-offset:4px; border-radius:8px; }
+  .acc[open] > summary .acc-chevron { transform:rotate(180deg); color:#E60000; }
+  .acc > summary:hover .acc-chevron { color:#E60000; }
+  .acc > summary:focus-visible { outline:2px solid #E60000; outline-offset:4px; border-radius:8px; }
 
   /* Core-team carousel: the active slide is full colour and lifted, its
      neighbours sit back in greyscale so the eye lands on one person. */
@@ -267,8 +269,8 @@ tailwind.config = {
   .team-dot { display:grid; place-items:center; height:44px; width:26px; background:none; border:0; cursor:pointer; }
   .team-dot > i { display:block; width:9px; height:9px; border-radius:50%; background:#C7CFDE;
                   transition:background .25s ease, width .25s ease; }
-  .team-dot[aria-selected="true"] > i { background:#0145F0; width:24px; border-radius:50px; }
-  .team-dot:focus-visible { outline:2px solid #0145F0; outline-offset:2px; border-radius:8px; }
+  .team-dot[aria-selected="true"] > i { background:#E60000; width:24px; border-radius:50px; }
+  .team-dot:focus-visible { outline:2px solid #E60000; outline-offset:2px; border-radius:8px; }
 
   /* Reveals. [data-reveal] has NO hidden resting state, so a blocked script
      can never strand content invisible. Both keyframe stops are required:
@@ -339,7 +341,7 @@ tailwind.config = {
     <div class="grid items-center gap-12 lg:grid-cols-[1.02fr_.98fr] lg:gap-10">
       <div>
         <h1 class="rise-in t-h1" style="animation-delay:.05s">
-          ERC-Accredited <span class="text-brand">Advanced Life Support</span> Courses in India
+          ERC-Accredited <span class="text-brandHi">Advanced Life Support</span> Courses in India
         </h1>
         <p class="rise-in lead mt-5 max-w-[52ch]" style="animation-delay:.12s">
           Enroll in our comprehensive 2-day Advanced Life Support (ALS) courses in India and gain the skills necessary to provide critical life support in emergencies.
@@ -412,7 +414,7 @@ tailwind.config = {
 
 <section id="why" class="py-20 lg:py-28">
   <div class="shell">
-    <h2 data-reveal class="t-h2 max-w-[20ch]">India&rsquo;s 1st ALS course recognized in the UK and Australia</h2>
+    <h2 data-reveal class="t-h2 max-w-[20ch]">India&rsquo;s 1st ALS course recognized in the <span class="text-brandHi">UK</span> and <span class="text-brandHi">Australia</span></h2>
     <p data-reveal class="copy mt-4 max-w-[58ch]">It&rsquo;s not just a course, it&rsquo;s your gateway to better opportunities.</p>
 
     <div data-reveal class="mt-12 grid gap-6 md:grid-cols-3">
@@ -443,7 +445,7 @@ tailwind.config = {
 
 <section class="bg-paper py-20 lg:py-28">
   <div class="shell">
-    <h2 data-reveal class="t-h2 max-w-[22ch]">Complete and comprehensive ALS training experience</h2>
+    <h2 data-reveal class="t-h2 max-w-[22ch]">Complete and comprehensive <span class="text-brandHi">ALS training experience</span></h2>
 
     <div data-reveal class="mt-12 grid gap-6 md:grid-cols-3">
       <article class="card p-8">
@@ -464,7 +466,7 @@ tailwind.config = {
 
 <section id="curriculum" class="py-20 lg:py-28">
   <div class="shell">
-    <h2 data-reveal class="t-h2 max-w-[24ch]">Comprehensive, globally recognized ALS training with hands-on expertise</h2>
+    <h2 data-reveal class="t-h2 max-w-[24ch]">Comprehensive, globally recognized ALS training with <span class="text-brandHi">hands-on expertise</span></h2>
 
     <div data-reveal class="mt-14 space-y-16 lg:space-y-24">
 
@@ -527,7 +529,7 @@ tailwind.config = {
         <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.5 6C6.5 6 4 8.5 4 11.5S6.2 17 9 17c.4 0 .8 0 1.1-.1-.6 1.4-2 2.5-3.6 2.8-.4.1-.6.5-.5.9.1.3.4.5.7.5h.2c3.6-.7 6.1-3.8 6.1-7.6V11.5C13 8.5 12.5 6 9.5 6zm10 0C16.5 6 14 8.5 14 11.5S16.2 17 19 17c.4 0 .8 0 1.1-.1-.6 1.4-2 2.5-3.6 2.8-.4.1-.6.5-.5.9.1.3.4.5.7.5h.2c3.6-.7 6.1-3.8 6.1-7.6V11.5C23 8.5 22.5 6 19.5 6z"/></svg>
       </span>
       <blockquote class="mt-7 text-[19px] font-medium leading-relaxed text-ink lg:text-[22px]">
-        &ldquo;The ALS course was incredibly thorough and far superior to any other training I&rsquo;ve received. The hands-on experience, combined with ERC-certified trainers who explained each concept in detail, gave me the confidence to handle real-life emergencies. I walked away not only ready for my PLAB-2 but with skills I could apply immediately in a clinical setting.&rdquo;
+        &ldquo;The ALS course was incredibly thorough and far superior to any other training I&rsquo;ve received. The <span class="text-flame">hands-on experience</span>, combined with <span class="text-flame">ERC-certified trainers</span> who explained each concept in detail, gave me the <span class="text-flame">confidence</span> to handle real-life emergencies. I walked away not only ready for my PLAB-2 but with skills I could apply immediately in a clinical setting.&rdquo;
       </blockquote>
       <figcaption class="mt-7">
         <div class="text-[15px] font-bold text-ink">Dr Rahul Mehta</div>
@@ -539,7 +541,7 @@ tailwind.config = {
 
 <section id="team" class="py-20 lg:py-28">
   <div class="shell">
-    <h2 data-reveal class="t-h2 text-center">The Core Team. <span class="text-brand">People who make it happen.</span></h2>
+    <h2 data-reveal class="t-h2 text-center">The Core Team. <span class="text-brandHi">People who make it happen.</span></h2>
 
     <!-- Carousel. The track is centred on the active slide by transform, and the
          markup order matches the source site's rotation. -->
@@ -626,11 +628,11 @@ tailwind.config = {
 
 <section id="pricing" class="bg-paper py-20 lg:py-28">
   <div class="shell">
-    <h2 data-reveal class="t-h2 max-w-[22ch]">Gain essential skills with our ERC-accredited ALS training</h2>
+    <h2 data-reveal class="t-h2 max-w-[22ch]">Gain essential skills with our <span class="text-brandHi">ERC-accredited</span> ALS training</h2>
 
     <div data-reveal class="mt-12 grid gap-8 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
       <div class="relative overflow-hidden rounded-card bg-ink p-9 text-white lg:p-11">
-        <div class="pointer-events-none absolute -right-16 -top-16 h-52 w-52 rounded-full bg-brand/25 blur-2xl" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute -right-16 -top-16 h-52 w-52 rounded-full bg-brand/30 blur-2xl" aria-hidden="true"></div>
         <div class="relative">
           <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-[12px] font-semibold uppercase tracking-[.09em] text-white/60">
             <span>Limited seats</span><span aria-hidden="true">&middot;</span><span>First-come-first-serve</span>
@@ -660,7 +662,7 @@ tailwind.config = {
 
 <section class="py-20 lg:py-28">
   <div class="shell">
-    <h2 data-reveal class="t-h2 max-w-[18ch]">Trusted by hundreds of doctors</h2>
+    <h2 data-reveal class="t-h2 max-w-[18ch]">Trusted by <span class="text-brandHi">hundreds of doctors</span></h2>
 
     <div data-reveal class="mt-12 grid gap-6 md:grid-cols-3">
       <figure class="card p-8">
@@ -704,7 +706,7 @@ tailwind.config = {
   <div class="shell">
     <div class="grid gap-12 lg:grid-cols-[1fr_1.5fr] lg:gap-20">
       <div class="lg:sticky lg:top-[104px] lg:self-start">
-        <h2 data-reveal class="t-h2">Have a question? We&rsquo;re here to answer.</h2>
+        <h2 data-reveal class="t-h2">Have a question? <span class="text-brandHi">We&rsquo;re here to answer.</span></h2>
       </div>
       <div data-reveal class="card divide-y divide-line px-7 lg:px-9">
         <details class="acc py-5" open>
@@ -738,7 +740,7 @@ tailwind.config = {
 
 <section class="py-20 lg:py-28">
   <div class="shell">
-    <h2 data-reveal class="t-h2 max-w-[20ch]">We have a fair &amp; transparent refund policy</h2>
+    <h2 data-reveal class="t-h2 max-w-[20ch]">We have a <span class="text-brandHi">fair &amp; transparent</span> refund policy</h2>
     <div data-reveal class="mt-11 grid gap-6 md:grid-cols-3">
       <div class="card p-8">
         <p class="text-[15px] font-bold text-brand">45 days or more before</p>
@@ -759,8 +761,8 @@ tailwind.config = {
 <section id="contact" class="pb-24 lg:pb-32">
   <div class="shell">
     <div data-reveal class="relative overflow-hidden rounded-card bg-ink px-8 py-16 text-center text-white lg:px-16 lg:py-20">
-      <div class="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-brand/25 blur-3xl" aria-hidden="true"></div>
-      <div class="pointer-events-none absolute -bottom-28 -right-20 h-72 w-72 rounded-full bg-brand/20 blur-3xl" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-brand/30 blur-3xl" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -bottom-28 -right-20 h-72 w-72 rounded-full bg-brand/25 blur-3xl" aria-hidden="true"></div>
       <div class="relative">
         <h2 class="mx-auto max-w-[16ch] !text-white t-h2">Add ALS to your portfolio. Enroll today!</h2>
         <p class="mx-auto mt-6 max-w-[56ch] text-[16px] leading-relaxed text-white/70">
