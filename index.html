@@ -274,6 +274,10 @@ tailwind.config = {
   .team-slide { flex:0 0 auto; transition:filter .45s ease, opacity .45s ease, transform .45s ease; }
   .team-slide[data-active="false"] { filter:grayscale(1); opacity:.45; transform:scale(.88); }
   .team-slide[data-active="true"]  { filter:none; opacity:1; transform:scale(1); }
+  /* Below lg there is no room to flank the active slide: the neighbours land
+     at roughly -165 and +539 in a 375px viewport, leaving clipped stubs at both
+     edges that read as artefacts rather than a deliberate peek. Show one. */
+  @media (max-width: 1023.98px) { .team-slide[data-active="false"] { display:none; } }
   /* The visible dot is small, but the button around it is a 44px target. */
   .team-dot { display:grid; place-items:center; height:44px; width:26px; background:none; border:0; cursor:pointer; }
   .team-dot > i { display:block; width:9px; height:9px; border-radius:50%; background:#C7CFDE;
@@ -819,12 +823,12 @@ tailwind.config = {
       <nav aria-label="Footer">
         <h2 class="text-[13px] font-bold uppercase tracking-[.08em] text-ink">Explore</h2>
         <ul class="mt-3 flex flex-col">
-          <li><a href="#why" class="inline-flex min-h-[42px] items-center text-[15px] text-body transition hover:text-brand">Why This Course</a></li>
-          <li><a href="#curriculum" class="inline-flex min-h-[42px] items-center text-[15px] text-body transition hover:text-brand">Curriculum</a></li>
-          <li><a href="#team" class="inline-flex min-h-[42px] items-center text-[15px] text-body transition hover:text-brand">Our Team</a></li>
-          <li><a href="#pricing" class="inline-flex min-h-[42px] items-center text-[15px] text-body transition hover:text-brand">Pricing</a></li>
-          <li><a href="#faq" class="inline-flex min-h-[42px] items-center text-[15px] text-body transition hover:text-brand">FAQ</a></li>
-          <li><a href="privacy.html" class="inline-flex min-h-[42px] items-center text-[15px] text-body transition hover:text-brand">Privacy Policy</a></li>
+          <li><a href="#why" class="inline-flex min-h-[44px] items-center text-[15px] text-body transition hover:text-brand">Why This Course</a></li>
+          <li><a href="#curriculum" class="inline-flex min-h-[44px] items-center text-[15px] text-body transition hover:text-brand">Curriculum</a></li>
+          <li><a href="#team" class="inline-flex min-h-[44px] items-center text-[15px] text-body transition hover:text-brand">Our Team</a></li>
+          <li><a href="#pricing" class="inline-flex min-h-[44px] items-center text-[15px] text-body transition hover:text-brand">Pricing</a></li>
+          <li><a href="#faq" class="inline-flex min-h-[44px] items-center text-[15px] text-body transition hover:text-brand">FAQ</a></li>
+          <li><a href="privacy.html" class="inline-flex min-h-[44px] items-center text-[15px] text-body transition hover:text-brand">Privacy Policy</a></li>
         </ul>
       </nav>
     </div>
