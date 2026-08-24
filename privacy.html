@@ -61,13 +61,11 @@ tailwind.config = {
   .t-h3 { font-size:1.0625rem; line-height:1.35; }
   .lead { color:#4B5563; font-size:1.0625rem; line-height:1.75; }
 
-  .btn { display:inline-flex; align-items:center; gap:.6rem; border-radius:50px;
-         padding:.8rem 1rem .8rem 1.45rem; font-size:.9375rem; font-weight:600;
-         transition:transform .18s ease, background-color .18s ease; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+         border-radius:12px; padding:.95rem 1.75rem; font-size:.9375rem; font-weight:600;
+         line-height:1.2; transition:background-color .18s ease, color .18s ease; }
   .btn-primary { background:#E60000; color:#fff; }
   .btn-primary:hover { background:#B30000; }
-  .btn .nub { display:grid; place-items:center; width:29px; height:29px; border-radius:50%;
-              background:rgba(255,255,255,.22); flex:none; }
   .btn:focus-visible { outline:2px solid #E60000; outline-offset:3px; }
 
   .hero-wash { background:
@@ -102,9 +100,7 @@ tailwind.config = {
       <img src="assets/logo-lockup-navy.png" width="720" height="251" alt=""
            class="hidden h-14 w-auto lg:block" />
     </a>
-    <a href="index.html" class="btn btn-primary">Back to the course
-      <span class="nub"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-    </a>
+    <a href="index.html" class="btn btn-primary">Back to the course</a>
   </div>
 </header>
 
