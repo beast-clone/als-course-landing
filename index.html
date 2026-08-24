@@ -18,7 +18,7 @@
 <!-- GEO / local signals -->
 <meta name="geo.region" content="IN-KA" />
 <meta name="geo.placename" content="Bangalore, Karnataka, India" />
-<meta name="ICBM" content="12.9716, 77.5946" />
+<meta name="ICBM" content="13.0067, 77.5804" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
@@ -105,13 +105,22 @@
       "@type": "LocalBusiness",
       "@id": "https://beast-clone.github.io/als-course-landing/#business",
       "name": "ALS Course India — GooCampus",
+      "legalName": "GooCampus Edu Solutions Private Limited",
       "url": "https://beast-clone.github.io/als-course-landing/",
       "telephone": "+91-74835-24565",
+      "email": "info@goocampus.in",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "#138/6, Ground Floor, 10th Main Road, 6th A Cross, Sadashiv Nagar, RMV Extension, Behind SBI Bank",
         "addressLocality": "Bangalore",
         "addressRegion": "Karnataka",
+        "postalCode": "560080",
         "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 13.0067,
+        "longitude": 77.5804
       },
       "areaServed": [
         { "@type": "Country", "name": "India" },
@@ -766,7 +775,9 @@ tailwind.config = {
       <div class="relative">
         <img src="assets/logo-lockup-white.png" width="720" height="251" loading="lazy" decoding="async"
              alt="ALS — Advance Life Support" class="mx-auto mb-8 h-16 w-auto" />
-        <h2 class="mx-auto max-w-[16ch] !text-white t-h2">Add ALS to your portfolio. Enroll today!</h2>
+        <!-- No max-width here: the line is meant to hold on one row on desktop.
+             text-balance keeps the break even on narrow screens where it must wrap. -->
+        <h2 class="mx-auto !text-white t-h2 [text-wrap:balance]">Add ALS to your portfolio. Enroll today!</h2>
         <p class="mx-auto mt-6 max-w-[56ch] text-[16px] leading-relaxed text-white/70">
           Ready to elevate your medical career? Join our ALS certification course today and gain the skills needed to succeed in critical care. For inquiries, contact us directly!
         </p>
@@ -794,8 +805,13 @@ tailwind.config = {
         <img src="assets/logo-lockup-navy.png" width="720" height="251" loading="lazy" decoding="async"
              alt="ALS — Advance Life Support" class="h-16 w-auto" />
         <address class="not-italic">
-          <p class="copy mt-3">Bangalore, India</p>
-          <p class="copy mt-1">Phone: <a href="tel:+917483524565" class="inline-flex min-h-[44px] items-center font-bold text-ink hover:text-brand">+91 74835 24565</a></p>
+          <p class="copy mt-4 font-bold text-ink">GooCampus Edu Solutions Pvt Ltd</p>
+          <p class="copy mt-1">#138/6, Ground Floor, 10th Main Road,<br />
+            6th A Cross, Sadashiv Nagar, RMV Extension,<br />
+            Behind SBI Bank, Bangalore,<br />
+            Karnataka &ndash; 560080, India.</p>
+          <p class="copy mt-3">Phone: <a href="tel:+917483524565" class="font-bold text-ink hover:text-brand">+91 74835 24565</a></p>
+          <p class="copy mt-1">Email: <a href="mailto:info@goocampus.in" class="font-bold text-ink hover:text-brand">info@goocampus.in</a></p>
         </address>
       </div>
       <nav class="flex flex-wrap gap-x-8 gap-y-1 sm:justify-end" aria-label="Footer">
