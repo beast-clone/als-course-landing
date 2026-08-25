@@ -191,7 +191,6 @@ tailwind.config = {
       colors: {
         brand:   '#CC0000',
         brandHi: '#FF0000',
-        flame:   '#D43F00',
         brandDeep:'#B30000',
         brandSoft:'#FFECEC',
         ink:     '#0A0A0A',
@@ -220,7 +219,7 @@ tailwind.config = {
      large, light and tight is what reads as editorial rather than shouty.
      !important is still needed to beat Tailwind's preflight. */
   h1,h2,h3 { color:#0A0A0A; font-weight:400 !important; letter-spacing:-.02em; }
-  .text-brandHi, .text-flame { font-weight:600 !important; }
+  .text-brandHi { font-weight:600 !important; }
   .t-h1 { font-size:clamp(2.5rem,1.4rem + 4.6vw,4rem); line-height:1.1; letter-spacing:-.01em; }
   .t-h2 { font-size:clamp(1.875rem,1.15rem + 3.1vw,3rem); line-height:1.21; letter-spacing:-.025em; }
   /* !important to beat the h1-h3 700 rule above, which itself needs !important
@@ -546,22 +545,6 @@ tailwind.config = {
   </div>
 </section>
 
-<section class="bg-paper py-14 lg:py-20">
-  <div class="shell">
-    <figure data-reveal class="card mx-auto max-w-[74ch] px-8 py-12 text-center lg:px-14">
-      <span class="mx-auto grid h-12 w-12 place-items-center rounded-full bg-brandSoft text-brand">
-        <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.5 6C6.5 6 4 8.5 4 11.5S6.2 17 9 17c.4 0 .8 0 1.1-.1-.6 1.4-2 2.5-3.6 2.8-.4.1-.6.5-.5.9.1.3.4.5.7.5h.2c3.6-.7 6.1-3.8 6.1-7.6V11.5C13 8.5 12.5 6 9.5 6zm10 0C16.5 6 14 8.5 14 11.5S16.2 17 19 17c.4 0 .8 0 1.1-.1-.6 1.4-2 2.5-3.6 2.8-.4.1-.6.5-.5.9.1.3.4.5.7.5h.2c3.6-.7 6.1-3.8 6.1-7.6V11.5C23 8.5 22.5 6 19.5 6z"/></svg>
-      </span>
-      <blockquote class="mt-7 text-[19px] font-medium leading-relaxed text-ink lg:text-[22px]">
-        &ldquo;The ALS course was incredibly thorough and far superior to any other training I&rsquo;ve received. The <span class="text-flame">hands-on experience</span>, combined with <span class="text-flame">ERC-certified trainers</span> who explained each concept in detail, gave me the <span class="text-flame">confidence</span> to handle real-life emergencies. I walked away not only ready for my PLAB-2 but with skills I could apply immediately in a clinical setting.&rdquo;
-      </blockquote>
-      <figcaption class="mt-7">
-        <div class="text-[15px] font-bold text-ink">Dr Rahul Mehta</div>
-        <div class="text-[14px] text-body">Batch of July 2024</div>
-      </figcaption>
-    </figure>
-  </div>
-</section>
 
 <section id="team" class="py-14 lg:py-20">
   <div class="shell">
@@ -678,7 +661,11 @@ tailwind.config = {
   <div class="shell">
     <div data-reveal class="sec-head"><h2 class="t-h2">Trusted by <span class="text-brandHi">hundreds of doctors</span></h2></div>
 
-    <div data-reveal class="mt-[50px] grid gap-[30px] md:grid-cols-3">
+    <div data-reveal class="mt-[50px] grid gap-[30px] md:grid-cols-2 lg:grid-cols-4">
+      <figure class="card p-[30px]">
+        <blockquote class="mt-4 text-[15px] leading-relaxed text-ink">&ldquo;The ALS course was incredibly thorough and far superior to any other training I&rsquo;ve received. The hands-on experience, combined with ERC-certified trainers who explained each concept in detail, gave me the confidence to handle real-life emergencies. I walked away not only ready for my PLAB-2 but with skills I could apply immediately in a clinical setting.&rdquo;</blockquote>
+        <figcaption class="mt-6"><div class="text-[14px] font-bold text-ink">Dr Rahul Mehta</div><div class="text-[13px] text-body">Batch of July 2024</div></figcaption>
+      </figure>
       <figure class="card p-[30px]">
         <div class="flex gap-1 text-brand" aria-label="Rated 5 out of 5">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
