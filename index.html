@@ -189,7 +189,7 @@ tailwind.config = {
   theme: {
     extend: {
       colors: {
-        brand:   '#E60000',
+        brand:   '#CC0000',
         brandHi: '#FF0000',
         flame:   '#D43F00',
         brandDeep:'#B30000',
@@ -234,11 +234,11 @@ tailwind.config = {
          border-radius:16px; padding:1rem 1.5rem; min-height:56px; font-size:.9375rem;
          font-weight:500; line-height:1.2;
          transition:background-color .18s ease, color .18s ease; }
-  .btn-primary { background:#E60000; color:#fff; }
+  .btn-primary { background:#CC0000; color:#fff; }
   .btn-primary:hover { background:#B30000; }
   .btn-ghost { background:#E5E5E5; color:#0A0A0A; }
   .btn-ghost:hover { background:#D9D9D9; }
-  .btn:focus-visible { outline:2px solid #E60000; outline-offset:3px; }
+  .btn:focus-visible { outline:2px solid #CC0000; outline-offset:3px; }
 
   .card { background:#fff; border-radius:16px; }
   .chip { display:inline-flex; align-items:center; gap:.55rem; border-radius:99px;
@@ -246,16 +246,6 @@ tailwind.config = {
 
   /* Hero wash — the reference's soft blue gradient field. */
   .hero-wash { background:#F5F5F5; }
-  /* Reference sets this at 241px / 5% and staggers the two words diagonally
-     behind the subject rather than running them on one line. */
-  .ghost-wrap { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
-  .ghost-word { position:absolute; font-weight:700; line-height:.78; white-space:nowrap;
-                font-size:clamp(3.5rem,16.8vw,15.1rem); color:rgba(10,10,10,.055);
-                user-select:none; }
-  /* `b` is the wider word, so it is anchored right rather than positioned from
-     the left — at 44% it ran past the viewport and got clipped mid-letter. */
-  .ghost-word.a { top:3%;  left:0; }
-  .ghost-word.b { top:25%; right:0; }
 
   /* Status pill above the headline, per the reference: 99px radius, grey fill,
      14px/500 at 1.68px tracking, with an 8px dot. */
@@ -269,7 +259,7 @@ tailwind.config = {
      background position sweeps the accent across the words. */
   .shimmer { position:absolute; inset:0; color:transparent; pointer-events:none;
              background-image:linear-gradient(135deg,
-               rgba(0,0,0,0) 0%, rgba(0,0,0,0) 35.6%, #E60000 50%,
+               rgba(0,0,0,0) 0%, rgba(0,0,0,0) 35.6%, #CC0000 50%,
                rgba(0,0,0,0) 64.4%, rgba(0,0,0,0) 100%);
              background-size:200% 200%; background-repeat:no-repeat;
              -webkit-background-clip:text; background-clip:text;
@@ -286,23 +276,14 @@ tailwind.config = {
   .sec-head { max-width:704px; margin-inline:auto; text-align:center; }
   .sec-head .copy { margin-top:1.15rem; }
 
-  /* Marquee: duplicated track + translateX(-50%) loops seamlessly. */
-  /* Fade the ends so the loop reads as continuous rather than hard-clipped. */
-  .marquee { overflow:hidden;
-    -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
-            mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); }
-  .marquee-track { display:flex; width:max-content; animation:slide var(--dur,38s) linear infinite; }
-  .marquee:hover .marquee-track, .marquee:focus-within .marquee-track { animation-play-state:paused; }
-  @keyframes slide { from { transform:translateX(0); } to { transform:translateX(-50%); } }
-
   /* FAQ accordion: list-none removes the browser's disclosure triangle, so the
      chevron is the only affordance the reader gets. */
   .acc > summary { padding-block:.7rem; }
   .acc > summary::-webkit-details-marker { display:none; }
   .acc-chevron { flex:none; color:#8A93A6; transition:transform .25s ease, color .25s ease; }
-  .acc[open] > summary .acc-chevron { transform:rotate(180deg); color:#E60000; }
-  .acc > summary:hover .acc-chevron { color:#E60000; }
-  .acc > summary:focus-visible { outline:2px solid #E60000; outline-offset:4px; border-radius:8px; }
+  .acc[open] > summary .acc-chevron { transform:rotate(180deg); color:#CC0000; }
+  .acc > summary:hover .acc-chevron { color:#CC0000; }
+  .acc > summary:focus-visible { outline:2px solid #CC0000; outline-offset:4px; border-radius:8px; }
 
   /* Core-team carousel: the active slide is full colour and lifted, its
      neighbours sit back in greyscale so the eye lands on one person. */
@@ -317,8 +298,8 @@ tailwind.config = {
   .team-dot { display:grid; place-items:center; height:44px; width:26px; background:none; border:0; cursor:pointer; }
   .team-dot > i { display:block; width:9px; height:9px; border-radius:50%; background:#C7CFDE;
                   transition:background .25s ease, width .25s ease; }
-  .team-dot[aria-selected="true"] > i { background:#E60000; width:24px; border-radius:50px; }
-  .team-dot:focus-visible { outline:2px solid #E60000; outline-offset:2px; border-radius:8px; }
+  .team-dot[aria-selected="true"] > i { background:#CC0000; width:24px; border-radius:50px; }
+  .team-dot:focus-visible { outline:2px solid #CC0000; outline-offset:2px; border-radius:8px; }
 
   /* Reveals. [data-reveal] has NO hidden resting state, so a blocked script
      can never strand content invisible. Both keyframe stops are required:
@@ -331,7 +312,6 @@ tailwind.config = {
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior:auto; }
     .rise-in { animation:none !important; }
-    .marquee-track { animation:none !important; }
     .team-slide { transition:none !important; }
     .shimmer { animation:none !important; }
     .shimmer { animation:none !important; }
@@ -385,10 +365,6 @@ tailwind.config = {
 <main>
 
 <section id="top" class="hero-wash relative -mt-[76px] overflow-hidden pb-20 pt-[110px] lg:-mt-[88px] lg:pb-28 lg:pt-[150px]">
-  <div class="ghost-wrap" aria-hidden="true">
-    <span class="ghost-word a">ALS</span>
-    <span class="ghost-word b">COURSE</span>
-  </div>
 
   <div class="shell relative">
     <div class="grid items-center gap-12 lg:grid-cols-[1.02fr_.98fr] lg:gap-10">
@@ -439,28 +415,22 @@ tailwind.config = {
   </div>
 </section>
 
-<section class="bg-ink py-5">
-  <div class="marquee" style="--dur:34s">
-    <div class="marquee-track">
-      <div class="flex shrink-0 items-center gap-10 pr-10">
-        <span class="whitespace-nowrap text-[15px] font-semibold text-white">India&rsquo;s 1st ALS course recognized in the UK and Australia</span>
-        <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-brand"></span>
-        <span class="whitespace-nowrap text-[15px] font-semibold text-white/70">ERC-accredited</span>
-        <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-brand"></span>
-        <span class="whitespace-nowrap text-[15px] font-semibold text-white/70">Certificate valid 3 years</span>
-        <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-brand"></span>
-        <span class="whitespace-nowrap text-[15px] font-semibold text-white/70">Desirable for NHS jobs</span>
-        <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-brand"></span>
+<section class="py-10">
+  <div class="shell">
+    <div class="rule flex flex-wrap items-center justify-center gap-x-14 gap-y-6 pt-9 text-center">
+      <div>
+        <div class="text-[32px] font-medium tracking-[-.02em] text-ink">2 days</div>
+        <p class="mt-1 text-[14px] text-body">of hands-on intensive training</p>
       </div>
-      <div class="flex shrink-0 items-center gap-10 pr-10" aria-hidden="true">
-        <span class="whitespace-nowrap text-[15px] font-semibold text-white">India&rsquo;s 1st ALS course recognized in the UK and Australia</span>
-        <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-brand"></span>
-        <span class="whitespace-nowrap text-[15px] font-semibold text-white/70">ERC-accredited</span>
-        <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-brand"></span>
-        <span class="whitespace-nowrap text-[15px] font-semibold text-white/70">Certificate valid 3 years</span>
-        <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-brand"></span>
-        <span class="whitespace-nowrap text-[15px] font-semibold text-white/70">Desirable for NHS jobs</span>
-        <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-brand"></span>
+      <div class="hidden h-10 w-px bg-line sm:block"></div>
+      <div>
+        <div class="text-[32px] font-medium tracking-[-.02em] text-ink">3 years</div>
+        <p class="mt-1 text-[14px] text-body">certificate validity</p>
+      </div>
+      <div class="hidden h-10 w-px bg-line sm:block"></div>
+      <div>
+        <div class="text-[32px] font-medium tracking-[-.02em] text-ink">UK &amp; Australia</div>
+        <p class="mt-1 text-[14px] text-body">where this certification is recognised</p>
       </div>
     </div>
   </div>
