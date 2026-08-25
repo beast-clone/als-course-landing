@@ -240,8 +240,12 @@ tailwind.config = {
   .btn:focus-visible { outline:2px solid #CC0000; outline-offset:3px; }
 
   .card { background:#fff; border-radius:16px; }
+  /* A white chip on the #F5F5F5 ground measured 1.09:1 — no visible edge at
+     all, against the 3:1 WCAG asks of a component boundary. Solid ink instead,
+     which separates from the page and from the photo it overhangs. */
   .chip { display:inline-flex; align-items:center; gap:.55rem; border-radius:99px;
-          background:#fff; padding:.6rem 1rem; font-size:.8125rem; font-weight:500; color:#0A0A0A; }
+          background:#0A0A0A; padding:.6rem 1rem .6rem .6rem; font-size:.8125rem;
+          font-weight:500; color:#fff; }
 
   /* Hero wash — the reference's soft blue gradient field. */
   .hero-wash { background:#F5F5F5; }
@@ -361,7 +365,7 @@ tailwind.config = {
 
 <main>
 
-<section id="top" class="hero-wash relative -mt-[76px] overflow-hidden pb-20 pt-[110px] lg:-mt-[88px] lg:pb-28 lg:pt-[150px]">
+<section id="top" class="hero-wash relative overflow-hidden pb-20 pt-10 lg:pb-28 lg:pt-16">
 
   <div class="shell relative">
     <div class="grid items-center gap-12 lg:grid-cols-[1.02fr_.98fr] lg:gap-10">
@@ -662,11 +666,12 @@ tailwind.config = {
     <div data-reveal class="sec-head"><h2 class="t-h2">Trusted by <span class="text-brandHi">hundreds of doctors</span></h2></div>
 
     <div data-reveal class="mt-[50px] grid gap-[30px] md:grid-cols-2 lg:grid-cols-4">
-      <figure class="card p-[30px]">
+      <figure class="card flex flex-col p-[30px]">
+        <div class="h-4" aria-hidden="true"></div>
         <blockquote class="mt-4 text-[15px] leading-relaxed text-ink">&ldquo;The ALS course was incredibly thorough and far superior to any other training I&rsquo;ve received. The hands-on experience, combined with ERC-certified trainers who explained each concept in detail, gave me the confidence to handle real-life emergencies. I walked away not only ready for my PLAB-2 but with skills I could apply immediately in a clinical setting.&rdquo;</blockquote>
-        <figcaption class="mt-6"><div class="text-[14px] font-bold text-ink">Dr Rahul Mehta</div><div class="text-[13px] text-body">Batch of July 2024</div></figcaption>
+        <figcaption class="mt-auto pt-6"><div class="text-[14px] font-bold text-ink">Dr Rahul Mehta</div><div class="text-[13px] text-body">Batch of July 2024</div></figcaption>
       </figure>
-      <figure class="card p-[30px]">
+      <figure class="card flex flex-col p-[30px]">
         <div class="flex gap-1 text-brand" aria-label="Rated 5 out of 5">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
@@ -675,9 +680,9 @@ tailwind.config = {
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
         </div>
         <blockquote class="mt-4 text-[15px] leading-relaxed text-ink">&ldquo;An informative and exceptionally well-organized ALS course. The curriculum was comprehensive, and each session built perfectly on the last, making complex concepts easy to grasp. I feel more confident.&rdquo;</blockquote>
-        <figcaption class="mt-6"><div class="text-[14px] font-bold text-ink">Dr. Jeevan</div><div class="text-[13px] text-body">Batch: March 2024</div></figcaption>
+        <figcaption class="mt-auto pt-6"><div class="text-[14px] font-bold text-ink">Dr. Jeevan</div><div class="text-[13px] text-body">Batch: March 2024</div></figcaption>
       </figure>
-      <figure class="card p-[30px]">
+      <figure class="card flex flex-col p-[30px]">
         <div class="flex gap-1 text-brand" aria-label="Rated 5 out of 5">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
@@ -686,9 +691,9 @@ tailwind.config = {
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
         </div>
         <blockquote class="mt-4 text-[15px] leading-relaxed text-ink">&ldquo;I learned essential ALS protocols tailored for hospital-based systems, which is exactly what I needed for my role. The course is a fantastic blend of theory and practice, making me feel prepared for real-world medical challenges.&rdquo;</blockquote>
-        <figcaption class="mt-6"><div class="text-[14px] font-bold text-ink">Dr. Krishaa N</div><div class="text-[13px] text-body">Batch: January 2024</div></figcaption>
+        <figcaption class="mt-auto pt-6"><div class="text-[14px] font-bold text-ink">Dr. Krishaa N</div><div class="text-[13px] text-body">Batch: January 2024</div></figcaption>
       </figure>
-      <figure class="card p-[30px]">
+      <figure class="card flex flex-col p-[30px]">
         <div class="flex gap-1 text-brand" aria-label="Rated 5 out of 5">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
@@ -697,7 +702,7 @@ tailwind.config = {
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.6 7 .9-5.1 4.8 1.3 7L12 18l-6.2 3.3 1.3-7L2 9.5l7-.9z"/></svg>
         </div>
         <blockquote class="mt-4 text-[15px] leading-relaxed text-ink">&ldquo;The course content was incredibly thorough and detailed, unlike any other training I&rsquo;ve attended. It covered every aspect of ALS, and the hands-on practice helped me gain the confidence to apply these skills effectively.&rdquo;</blockquote>
-        <figcaption class="mt-6"><div class="text-[14px] font-bold text-ink">Dr. Natasha</div><div class="text-[13px] text-body">Batch: July 2023</div></figcaption>
+        <figcaption class="mt-auto pt-6"><div class="text-[14px] font-bold text-ink">Dr. Natasha</div><div class="text-[13px] text-body">Batch: July 2023</div></figcaption>
       </figure>
     </div>
   </div>
@@ -778,7 +783,7 @@ tailwind.config = {
             <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 20zm4.4-5.9c-.2-.1-1.4-.7-1.7-.8s-.4-.1-.5.1-.6.8-.7 1-.3.2-.5.1a6.5 6.5 0 01-1.9-1.2 7.3 7.3 0 01-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.4a.9.9 0 00-.6.3 2.6 2.6 0 00-.8 1.9A4.5 4.5 0 009 12a10.2 10.2 0 003.9 3.4 9.6 9.6 0 001.3.5 3.1 3.1 0 001.4.1 2.4 2.4 0 001.5-1.1 1.9 1.9 0 00.1-1.1c0-.1-.2-.2-.4-.3z"/></svg>
             Send us a WhatsApp
           </a>
-          <a href="mailto:info@goocampus.in" class="btn btn-ghost !border-white !bg-transparent !text-white hover:!bg-white hover:!text-ink">Send us an email</a>
+          <a href="mailto:info@goocampus.in" class="btn btn-ghost !border !border-solid !border-white !bg-transparent !text-white hover:!bg-white hover:!text-ink">Send us an email</a>
         </div>
         <p class="mt-8 text-[14px] text-white/60">Have questions about this course? Don&rsquo;t hesitate to reach out.</p>
       </div>
